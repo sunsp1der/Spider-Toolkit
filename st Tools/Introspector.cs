@@ -136,4 +136,19 @@ public static T GetValue<T>(object inObj, string fieldName) where T : struct
 	return (T)GetField(inObj, fieldName);
 }
 
+public static void SetField(object inObj, string fieldName, object newValue)
+{
+	FieldInfo info = inObj.GetType().GetField(fieldName);
+	if (info != null)
+		info.SetValue(inObj, newValue);
+}
+
+private static object GetField(object inObj, string fieldName)
+{
+	object ret = null;
+	FieldInfo info = inObj.GetType().GetField(fieldName);
+	if (info != null)
+		ret = info.GetValue(inObj);
+	return ret;
+}
 */

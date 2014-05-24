@@ -7,7 +7,7 @@ public class LockedView {
 	// name your LockedView field _[Name of viewed member]...
 	public string tooltip;
 
-	public LockedView (string mytooltip= ""){
-		tooltip = mytooltip;
+	public LockedView (string myTooltip= ""){
+		tooltip = myTooltip;
 	}
 }

@@ -7,7 +7,7 @@ public class MethodButton {
 	// name your MethodButton field _[Name of member function]...
 	public string tooltip;
 
-	public MethodButton (string mytooltip= ""){
-		tooltip = mytooltip;
+	public MethodButton (string myTooltip= ""){
+		tooltip = myTooltip;
 	}
 }

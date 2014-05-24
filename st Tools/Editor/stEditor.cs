@@ -41,7 +41,6 @@ public class stEditor
 		#endif
 		EditorUtility.SetDirty( target );		
 	}
-	
 }
 
 	
