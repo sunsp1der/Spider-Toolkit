@@ -2,12 +2,10 @@
 using System.Collections;
 
 [AddComponentMenu("st Main/Behaviors/Mouse Cursor Hide")]
-/// <summary>
-/// Mouse cursor hide. Make the mouse cursor invisible.
-/// </summary>
+
 public class MouseCursorHide : MonoBehaviour {
+	// make the mouse cursor invisible
 	void Start () {
 		Screen.showCursor = false;
 	}
-
 }

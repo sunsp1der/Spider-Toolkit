@@ -3,8 +3,8 @@
 #define USEFLOAT	//Use floats for numbers instead of doubles	(enable if you're getting too many significant digits in string output)
 //#define POOLING	//Currently using a build setting for this one (also it's experimental)
 
-// Slabtown edit added generic addfield(object) 
-// Slabtown added isFloat bool and decimal place in stringify
+// ST edit added generic AddField(object) 
+// ST added isFloat bool and decimal place in stringify
 
 using System.Diagnostics;
 using UnityEngine;
@@ -400,7 +400,7 @@ public class JSONObject {
 			list.Add(obj);
 		}
 	}
-	//Slabtown ! Generic Addfield deciphers objects and does its best
+	//ST ! Generic Addfield deciphers objects and does its best
 	public void AddField(string name, object o) {
 		switch (o.GetType().ToString()) {
 		case "System.Int32":
