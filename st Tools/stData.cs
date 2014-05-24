@@ -12,8 +12,7 @@ using System.Collections.Generic;
 public class stData : MonoBehaviour {
 	
 	static public Dictionary< string, stDictionary> dictionaries = new Dictionary< string, stDictionary>();
-	static public Dictionary<string, stInt> intDictionary = new Dictionary<string, stInt>();
-	
+
 	static public object GetDictionaryValue( string dictionaryName, string key) {
 		try {
 			return dictionaries[dictionaryName].dict[key];
