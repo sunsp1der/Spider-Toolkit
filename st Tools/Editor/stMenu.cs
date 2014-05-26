@@ -8,13 +8,13 @@ public class stMenu : EditorWindow {
 
 	[MenuItem( "Tools/Spider's Toolkit/Create/Object", false, 0 )]	
 	public static void NewObject() {
-		GameObject noob = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider Toolkit/st Object/st Object.prefab", typeof(GameObject)));
+		GameObject noob = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Object/st Object.prefab", typeof(GameObject)));
 		noob.name = "Object";
 	}
 
 	[MenuItem( "Tools/Spider's Toolkit/Create/Text", false, 0 )]	
 	public static void NewText() {
-		GameObject noob = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider Toolkit/st Text/st Text.prefab", typeof(GameObject)));
+		GameObject noob = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Text/st Text.prefab", typeof(GameObject)));
 		noob.name = "Text";
 	}
 
@@ -22,7 +22,7 @@ public class stMenu : EditorWindow {
 	public static void NewScene() {
 		EditorApplication.SaveCurrentSceneIfUserWantsTo();
 		EditorApplication.NewScene();
-		GameObject stmain = GameObject.Instantiate( Resources.LoadAssetAtPath("Assets/Spider Toolkit/st Main/st Main.prefab", typeof(GameObject)) ) as GameObject;
+		GameObject stmain = GameObject.Instantiate( Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Main/st Main.prefab", typeof(GameObject)) ) as GameObject;
 		stmain.name = "st Main";
 		stmain.transform.parent = Camera.main.transform	;
 		Camera.main.backgroundColor = Color.black;
