@@ -6,19 +6,19 @@ using System.Collections.Generic;
 
 public class stMenu : EditorWindow {			
 
-	[MenuItem( "Tools/Spider's Toolkit/Create/Object", false, 0 )]	
+	[MenuItem( "Tools/Spider Toolkit/Create/Object", false, 0 )]	
 	public static void NewObject() {
 		GameObject noob = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider Toolkit/st Object/st Object.prefab", typeof(GameObject)));
 		noob.name = "Object";
 	}
 
-	[MenuItem( "Tools/Spider's Toolkit/Create/Text", false, 0 )]	
+	[MenuItem( "Tools/Spider Toolkit/Create/Text", false, 0 )]	
 	public static void NewText() {
 		GameObject noob = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider Toolkit/st Text/st Text.prefab", typeof(GameObject)));
 		noob.name = "Text";
 	}
 
-	[MenuItem( "Tools/Spider's Toolkit/Create/New Scene", false, 0 )]	
+	[MenuItem( "Tools/Spider Toolkit/Create/New Scene", false, 0 )]	
 	public static void NewScene() {
 		EditorApplication.SaveCurrentSceneIfUserWantsTo();
 		EditorApplication.NewScene();
@@ -28,7 +28,7 @@ public class stMenu : EditorWindow {
 		Camera.main.backgroundColor = Color.black;
 	}
 
-	[MenuItem( "Tools/Spider's Toolkit/Set Up ST Default Collision Layers", false, 0 )]	
+	[MenuItem( "Tools/Spider Toolkit/Set Up ST Default Collision Layers", false, 0 )]	
 	public static void AddSTLayers() {
 		SerializedObject tagManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
 		

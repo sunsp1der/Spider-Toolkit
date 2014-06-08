@@ -12,8 +12,11 @@ public class Fade : MonoBehaviour {
 
 	SpriteRenderer spriteRenderer;
 
-	void Start () {
+	void Awake() {
 		spriteRenderer = GetComponent<SpriteRenderer>();
+	}
+
+	void Start () {
 		if (fadeInSeconds > 0) {
 			FadeIn( fadeInSeconds);
 		}

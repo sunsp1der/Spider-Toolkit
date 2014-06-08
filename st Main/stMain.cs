@@ -59,4 +59,14 @@ public class stMain : MonoBehaviour {
 		}
 	}
 
+	public void CheckNewScene() {
+		if (stTools.newSceneAtTime == 0 || stTools.newSceneAtTime <= Time.time) {
+			stTools.DoNewScene ();
+		}
+		else if (stTools.newSceneAtTime > Time.time) {
+			Invoke ("CheckNewScene", stTools.newSceneAtTime - Time.time);
+		}
+	}
+
+
 }

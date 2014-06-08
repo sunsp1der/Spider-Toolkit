@@ -64,7 +64,9 @@ public class stData : MonoBehaviour {
 	public static void SetupDictionaries () {
 		stDictionary[] dictList = stTools.stMain.GetComponents<stDictionary>();
 		foreach (stDictionary dict in dictList) {
-			dictionaries.Add( dict.dataName, dict);
+			if (!dictionaries.ContainsKey(dict.dataName)) {
+				dictionaries.Add( dict.dataName, dict);	
+			}
 		}
 		
 	}

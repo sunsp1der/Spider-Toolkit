@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class stObject : MonoBehaviour {
-	// Base component for Spider's Toolkit objects
+	// Base component for Spider Toolkit objects
 	// Add's "Remove" method, which destroys an object but allows delaying and blocking for effects like Fade
 	// or Shrink. Also sends a Remove callback to all children.
 

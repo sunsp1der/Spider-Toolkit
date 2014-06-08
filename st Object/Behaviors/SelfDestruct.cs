@@ -9,6 +9,7 @@ public class SelfDestruct : MonoBehaviour {
 	public float timerSecs = 3; // seconds before object self destructs
 	public bool start_automatically = true; // start timer when object is created
 											// otherwise call 'StartTimer' method
+	public bool doRemoveEffects = true;
 	
 	void Start () {
 		if (start_automatically) {
@@ -26,7 +27,12 @@ public class SelfDestruct : MonoBehaviour {
 	}
 
 	void Destruct(){
-		stTools.Remove( gameObject);
+		if (doRemoveEffects) {
+			stTools.Remove(gameObject);
+		}
+		else {
+			Destroy( gameObject);
+		}
 	}
 
 	void AbortTimer (){

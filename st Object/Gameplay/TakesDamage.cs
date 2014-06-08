@@ -14,8 +14,12 @@ public class TakesDamage : MonoBehaviour {
 	                                 // take damage for this many seconds
 	public bool ontakedamageCallback;
 
+	[HideInInspector]
 	public int health;
+	public LockedView _health;
+	[HideInInspector]
 	public bool invincible = false;
+	public LockedView _invincible;
 
 	Color startTint;
 	SpriteRenderer spriteRenderer;
