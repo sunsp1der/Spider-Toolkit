@@ -9,14 +9,22 @@ public class MouseClickSound : MonoBehaviour {
 	// Object must have an activated collider
 
 	public Sound sound;
-	public bool click = false; // if false, play when pressed and released
-							  // on object. like a button
+	[Tooltip("Play when clicked and released.")]
+	public bool asButton = false;
+	[Tooltip("Stop sound when mouse released")]
+	public bool stopOnMouseUp = false; 
 
 	void OnMouseDown() {
-		if (click) sound.Play();
+		if (!asButton) sound.Play();
 	}
 
 	void OnMouseUpAsButton() {
-		if (!click) sound.Play();
+		if (asButton) sound.Play();
+	}
+
+	void OnMouseUp() {
+		if (stopOnMouseUp) {
+			sound.Stop();
+		}
 	}
 }

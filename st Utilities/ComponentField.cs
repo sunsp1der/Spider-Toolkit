@@ -5,8 +5,8 @@ using System.Collections;
 [Serializable]
 public class ComponentField {
 
-	public Component component;
-	public string member;
+	public Component component = null;
+	public string member = "";
 
 	public string GetString() {
 		var data = Introspector.GetValue( component, member);
@@ -24,7 +24,26 @@ public class ComponentField {
 		}
 	}
 
+	public float GetFloat() {
+		var data = Introspector.GetValue( component, member);
+		if (data is float) {
+			return (float) data;
+		}
+		else {
+			Debug.LogError ("GetFloat invalid for "+component.ToString()+" - "+member);
+			return 0;
+		}
+	}
+
 	public void SetValue( int val) {
+		Introspector.SetValue( component, member, val);
+	}
+
+	public void SetValue( float val) {
+		Introspector.SetValue( component, member, val);
+	}
+
+	public void SetValue( string val) {
 		Introspector.SetValue( component, member, val);
 	}
 }

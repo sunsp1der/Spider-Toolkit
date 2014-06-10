@@ -6,6 +6,7 @@ public class stMain : MonoBehaviour {
 	// the stMain object loaded in the first scene will persist through all levels... 
 	// stMain objects in future level files will be ignored
 
+	[Tooltip("Automatically add basic utility keys.")]
 	public bool utilityKeys = true; 
 	/*
 	 * Restart: R
@@ -43,6 +44,7 @@ public class stMain : MonoBehaviour {
 
 	void Update() {
 		if (utilityKeys) {
+
 			if (Input.GetKeyDown (KeyCode.R))
 			{
 				Application.LoadLevel (startLevel);

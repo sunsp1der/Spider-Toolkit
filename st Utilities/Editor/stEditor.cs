@@ -32,15 +32,6 @@ public class stEditor
 		GUILayout.Space( padding );
 	}
 
-	public static void RegisterUndo( UnityEngine.Object target, string UndoMessage )
-	{
-		#if UNITY_4_3
-		Undo.RecordObject( target, UndoMessage );
-		#else
-		Undo.RegisterSceneUndo( UndoMessage );
-		#endif
-		EditorUtility.SetDirty( target );		
-	}
 }
 
 	

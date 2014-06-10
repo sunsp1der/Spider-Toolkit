@@ -17,28 +17,15 @@ public class ControlsRotateDrive : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () { 
-		float r = Input.GetAxis(horizontalInput);
-		float y = Input.GetAxis(verticalInput);
-
-		if (!softenInput) {
-			if (!Input.GetButton(horizontalInput)) {
-				r = 0;
-			}
-			else if (r > 0) {
-				r = 1;
-			}
-			else if (r < 0) {
-				r = -1;
-			}
-			if (!Input.GetButton(verticalInput)) {
-				y = 0;
-			}
-			if (y > 0) {
-				y = 1;
-			}
-			else if (y < 0) {
-				y = -1;
-			}
+		float r;
+		float y;
+		if (softenInput) {
+			r = Input.GetAxis(horizontalInput);
+			y = Input.GetAxis(verticalInput);
+		}
+		else {
+			r = stTools.GetAxisHard(horizontalInput);
+			y = stTools.GetAxisHard(verticalInput);
 		}
 
 		gameObject.rigidbody2D.angularVelocity = -r * angularVelocity;

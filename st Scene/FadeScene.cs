@@ -5,12 +5,12 @@ using System.Collections;
 
 public class FadeScene : MonoBehaviour {
 	// If this is on an object in the scene, fade the whole scene in and/or out
-	// Currently does not work with particle effects!!!
-	// Generally works well to attach this to camera object
+	// May not work with particle effects!!!
+	// Generally works well to attach this to camera object.
 	public float fadeInSecs = 0; // 0 = no fade
 	public float fadeOutSecs = 0; // 0 = no fade
 	public float blackedOutSecs = 0; // after faded out, wait this long extra before loading new scene
-	public GameObject fadeCover; // the object to put in front of camera for fade
+	public GameObject fadeCover; // the object to put in front of camera for fade. Different effects can be created by making your own 
 
 	GameObject fadeCoverInstance; // this will be a large object we put in front of the camera
 

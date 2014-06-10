@@ -92,6 +92,12 @@ public class Introspector {
 	public static void SetValue(object source, string name, object newValue)
 	{
 		FieldInfo info = source.GetType().GetField(name);
+		if (info == null) {
+			PropertyInfo pInfo = source.GetType().GetProperty (name);
+			if (pInfo != null) {
+				pInfo.SetValue(source, newValue, null);
+			}
+		}
 		if (info != null) {
 			info.SetValue(source, newValue);
 		}

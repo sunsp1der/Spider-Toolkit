@@ -17,28 +17,15 @@ public class ControlsDirection : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () { 
-		float x = Input.GetAxis(horizontalInput);
-		float y = Input.GetAxis(verticalInput);
-
-		if (!softenInput) {
-			if (!Input.GetButton(horizontalInput)) {
-				x = 0;
-			}
-			else if (x > 0) {
-				x = 1;
-			}
-			else if (x < 0) {
-				x = -1;
-			}
-			if (!Input.GetButton(verticalInput)) {
-				y = 0;
-			}
-			if (y > 0) {
-				y = 1;
-			}
-			else if (y < 0) {
-				y = -1;
-			}
+		float x;
+		float y;
+		if (softenInput) {
+			x = Input.GetAxis(horizontalInput);
+			y = Input.GetAxis(verticalInput);
+		}
+		else {
+			x = stTools.GetAxisHard(horizontalInput);
+			y = stTools.GetAxisHard(verticalInput);
 		}
 
 		Vector2 v =  new Vector2( x * moveVelocity.x, y * moveVelocity.y);

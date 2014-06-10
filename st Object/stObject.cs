@@ -6,6 +6,7 @@ public class stObject : MonoBehaviour {
 	// Add's "Remove" method, which destroys an object but allows delaying and blocking for effects like Fade
 	// or Shrink. Also sends a Remove callback to all children.
 
+	[Tooltip("Deactivate object at level start, but keep spawnable.")]
 	public bool archetype = false; // if true, object will be deactivated when game starts
 								   // to be used for spawning and stTools.Spawn.
 								   // when deactivated, this value will become false and 
@@ -13,6 +14,7 @@ public class stObject : MonoBehaviour {
 
 	[HideInInspector]
 	public GameObject myArchetype; // if copied from an archetype  
+	[Tooltip("Archetype this object was spawned from.")]
 	public LockedView _myArchetype;// = new LockedView("Archetype object this was spawned from");
 
 	float destroyAtTime = 0;

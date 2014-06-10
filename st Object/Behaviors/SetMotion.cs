@@ -6,12 +6,16 @@ using System.Collections;
 public class SetMotion : MonoBehaviour {
 	// Set object's velocity and/or angular velocity when spawned
 
-	public float speed = 1; // speed of linear velocity
-	public float angle = 0; // angle of linear velocity
+	[Tooltip("Speed of linear velocity")]
+	public float speed = 1; 
+	[Tooltip("Angle of linear velocity")]
+	public float angle = 0; 
 	public float angularVelocity = 0;
+	[Tooltip("Set motion relative to object rotation")]
 	public bool rotated = true; // If owner is already rotated when motion is set,
 								// velocity and acceleration will be relative to 
 								// that rotation
+	[Tooltip("Add to current values")]
 	public bool additive = true; // Add to owner's values instead of setting them
 
 	void Start () {

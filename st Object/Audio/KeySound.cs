@@ -6,7 +6,8 @@ public class KeySound : MonoBehaviour {
 
 	public Sound sound;
 	public string inputName = "Jump"; // see project settings/input
-	public bool stopOnKeyUp = false; // loop sound while key is down
+	[Tooltip("Stop sound when mouse released")]
+	public bool stopOnKeyUp = false; 
 
 	bool playing = false;
 

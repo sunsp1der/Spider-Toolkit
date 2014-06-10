@@ -35,6 +35,7 @@ public class ComponentFieldEditor : PropertyDrawer {
 		var button = new GUIContent( "Put", tooltip );
 		if( GUI.Button( tempPosition, button) && copiedComponent)
 		{
+			Undo.RecordObject( comp, "Set ComponentField '"+property.name+"' Component");
 			componentField.component = stEditor.clipboard;
 		}
 		GUI.enabled = true;
@@ -52,7 +53,7 @@ public class ComponentFieldEditor : PropertyDrawer {
 			int memberIndex = availableMembers.ToList().FindIndex(member => member == componentField.member);
 			int selected = EditorGUI.Popup(position, "Member", memberIndex, availableMembers );
 			if (selected >= 0) {
-				stEditor.RegisterUndo( comp, "Set ComponentField '"+property.name+"' Member");
+				Undo.RecordObject( comp, "Set ComponentField '"+property.name+"' Member");
 				componentField.member = availableMembers[selected];
 			}
 		}
