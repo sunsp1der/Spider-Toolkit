@@ -20,13 +20,13 @@ public class Cam2DFollow : MonoBehaviour {
 
 	Vector3 offsetZ; // camera's z distance from object
 	Vector3 lastPosition;
-	Vector3 currentVelocity;
+	public Vector3 currentVelocity;
 	Vector3 lookAheadOffset; // target 
 	
 	void Start () {
 		lastPosition = transform.position;
 		offsetZ = new Vector3(0,0,(followingCamera.position - transform.position).z);
-		lookAheadOffset = offsetZ;
+		lookAheadOffset = Vector3.zero;
 	} 
 	
 	void Update () {
@@ -45,7 +45,6 @@ public class Cam2DFollow : MonoBehaviour {
 				yOffset = lookAhead * Mathf.Sign (moveDelta.y);
 			}
 			lookAheadOffset = new Vector3( xOffset, yOffset, 0);
-			print (lookAheadOffset);
 		}
 		else { 
 			// if we're not moving, start resetting the offset to zero

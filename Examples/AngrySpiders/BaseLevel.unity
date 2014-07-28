@@ -5711,7 +5711,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1981209607}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80e361a58355a5640b68cbada2fda459, type: 3}
   m_Name: 
@@ -5723,6 +5723,7 @@ MonoBehaviour:
   lookAheadMoveThreshold: .100000001
   followX: 1
   followY: 0
+  currentVelocity: {x: 0, y: 0, z: 0}
 --- !u!1001 &2059294834
 Prefab:
   m_ObjectHideFlags: 0
