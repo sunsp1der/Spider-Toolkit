@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿// deal damage to object collided with if that object has
+// TakesDamage component
+
+using UnityEngine;
 using System.Collections;
 
 public class DealsDamage : MonoBehaviour {
-	// deal damage to object collided with if that object has
-	// TakesDamage component
 
 	public int amount = 100;
 	public bool removeOnDamage = true;

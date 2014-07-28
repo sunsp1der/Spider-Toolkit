@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// keyboard controls for a float value
+
+using UnityEngine;
 using System.Collections;
 
 [AddComponentMenu("st Object/Input/Control Float")]
@@ -22,10 +24,10 @@ public class ControlFloat : MonoBehaviour {
 	public bool softenInput = true;
 	[Tooltip("See project settings/input")]
 	public string input = "Vertical"; 
-	[Tooltip("Apply min and max limits")]
+	[Tooltip("Apply minLimit and maxLimit limits")]
 	public bool limits = false;
-	public float min = 0;
-	public float max = 100;
+	public float minLimit = 0;
+	public float maxLimit = 100;
 
 	stDictionary dict = null;
 
@@ -40,7 +42,7 @@ public class ControlFloat : MonoBehaviour {
 
 		if (oncePerClick) {
 			if (Input.GetButtonDown(input)) {
-				change = stTools.GetAxisHard(input) * delta;
+				change = stTools.GetAxisBool(input) * delta;
 			}
 		}
 		else {
@@ -48,7 +50,7 @@ public class ControlFloat : MonoBehaviour {
 				change = Input.GetAxis(input) * delta;
 			}
 			else {
-				change = stTools.GetAxisHard(input) * delta;
+				change = stTools.GetAxisBool(input) * delta;
 			}
 		}
 		if (change != 0) {
@@ -56,14 +58,14 @@ public class ControlFloat : MonoBehaviour {
 			if (dict) {
 				newVal = dict.GetFloat(key) + change;
 				if (limits) {
-					newVal = newVal.LimitToRange(min, max);
+					newVal = newVal.LimitToRange(minLimit, maxLimit);
 				}
 				dict.Set (key, newVal);
 			}
 			if (field.member != "") {
 				newVal = field.GetFloat() + change;
 				if (limits) {
-					newVal = newVal.LimitToRange(min, max);
+					newVal = newVal.LimitToRange(minLimit, maxLimit);
 				}
 				field.SetValue (newVal);
 			}

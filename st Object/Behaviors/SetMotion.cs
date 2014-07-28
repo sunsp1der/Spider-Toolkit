@@ -22,7 +22,7 @@ public class SetMotion : MonoBehaviour {
 		DoSetMotion();
 	}
 	
-	void DoSetMotion () {
+	public void DoSetMotion () {
 		float moveangle = -angle + 90;
 		if (rotated) {
 			moveangle += gameObject.transform.eulerAngles.z;

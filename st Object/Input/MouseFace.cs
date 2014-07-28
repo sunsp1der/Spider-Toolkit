@@ -5,14 +5,27 @@ using System.Collections;
 
 public class MouseFace : MonoBehaviour{
 
-	public float angularVelocity = 50; // negative = always face object exactly
-	public float offset = 0; // offset rotation by this much
-	public bool followOffscreen = true; // if true, point at last known mouse position
+	[Tooltip("negative = always face object exactly")]
+	public float angularVelocity = 50;
+	[Tooltip("Add this to rotation angle")]
+	public float offset = 0; 
+	[Tooltip("Follow when mouse is not moving")]
+	public bool followWhenStill = false;
 
-	public void Update () {
-		if (!followOffscreen && !Input.mousePresent) return;
+	Vector3 oldLocation;
+
+	void Start() {
+		oldLocation = new Vector3();
+	}
+
+	void Update () {
+		if (!Input.mousePresent) return;
 		// figure out target rotation
 		Vector3 mouseLocation = Input.mousePosition;
+		if (!followWhenStill && mouseLocation == oldLocation) {
+			return;
+		}
+		oldLocation = mouseLocation;
 		mouseLocation.z = -Camera.main.transform.position.z;
 		mouseLocation = Camera.main.ScreenToWorldPoint(mouseLocation);
 		Vector3 difference = mouseLocation - transform.position;

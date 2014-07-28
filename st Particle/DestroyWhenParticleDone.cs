@@ -6,10 +6,13 @@ using System.Collections;
 [RequireComponent(typeof(ParticleSystem))]
 public class DestroyWhenParticleDone : MonoBehaviour {
 
+	[Tooltip("Add this to the particle's duration to determine total lifetime.")]
+	public float extraDelay = 0;
+
 // destroy the particle system after it's 'duration' passes
 
 	void Start () {
-		Invoke("DestroyParticle", GetComponent<ParticleSystem>().duration);
+		Invoke("DestroyParticle", GetComponent<ParticleSystem>().duration + extraDelay);
 	}
 	
 	void DestroyParticle () {

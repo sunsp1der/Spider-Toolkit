@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// add up/down/left/right controls
+
+using UnityEngine;
 using System.Collections;
 
 [AddComponentMenu("st Object/Input/Controls Direction")]
@@ -24,14 +26,14 @@ public class ControlsDirection : MonoBehaviour {
 			y = Input.GetAxis(verticalInput);
 		}
 		else {
-			x = stTools.GetAxisHard(horizontalInput);
-			y = stTools.GetAxisHard(verticalInput);
+			x = stTools.GetAxisBool(horizontalInput);
+			y = stTools.GetAxisBool(verticalInput);
 		}
 
 		Vector2 v =  new Vector2( x * moveVelocity.x, y * moveVelocity.y);
-		gameObject.rigidbody2D.velocity = v;
+		rigidbody2D.velocity = v;
 
-		gameObject.rigidbody2D.angularVelocity = 0;
+		rigidbody2D.angularVelocity = 0;
 
 		if (faceMotion && v.magnitude > 0) {
 			transform.rotation = Quaternion.AngleAxis (Mathf.Atan2(v.y,v.x) * Mathf.Rad2Deg - 90, Vector3.forward);

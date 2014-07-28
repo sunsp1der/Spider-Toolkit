@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+// main game object for ST based games
+// the stMain object loaded in the first scene will persist through all levels... 
+// stMain objects in future level files will be ignored
+
+using UnityEngine;
 using System.Collections;
 
 public class stMain : MonoBehaviour {
-	// main game object for ST based games
-	// the stMain object loaded in the first scene will persist through all levels... 
-	// stMain objects in future level files will be ignored
 
 	[Tooltip("Automatically add basic utility keys.")]
 	public bool utilityKeys = true; 
@@ -16,17 +17,9 @@ public class stMain : MonoBehaviour {
 	public bool undying = false;
 
 	string startLevel = "";
+
 	void Awake() {
 		stData.SetupDictionaries();
-	}
-
-	void Start () {
-		if (!gameObject.CompareTag("st Main")) {
-			Debug.LogWarning("st Main object needs to have tag: 'st Main'");
-		}
-		if (startLevel == ""){
-			startLevel = Application.loadedLevelName;
-		}
 		GameObject[] mains = GameObject.FindGameObjectsWithTag("st Main");
 		if ( mains.Length > 1) {
 			for (int i = mains.Length-1; i>=0; i--) {
@@ -40,6 +33,15 @@ public class stMain : MonoBehaviour {
 			}
 		}
 		DontDestroyOnLoad(this);
+	}
+
+	void Start () {
+		if (!gameObject.CompareTag("st Main")) {
+			Debug.LogWarning("st Main object needs to have tag: 'st Main'");
+		}
+		if (startLevel == ""){
+			startLevel = Application.loadedLevelName;
+		}
 	}
 
 	void Update() {
@@ -61,12 +63,12 @@ public class stMain : MonoBehaviour {
 		}
 	}
 
-	public void CheckNewScene() {
-		if (stTools.newSceneAtTime == 0 || stTools.newSceneAtTime <= Time.time) {
-			stTools.DoNewScene ();
+	public void CheckEndScene() {
+		if (stTools.endSceneAtTime == 0 || stTools.endSceneAtTime <= Time.time) {
+			stTools.DoEndScene ();
 		}
-		else if (stTools.newSceneAtTime > Time.time) {
-			Invoke ("CheckNewScene", stTools.newSceneAtTime - Time.time);
+		else if (stTools.endSceneAtTime > Time.time) {
+			Invoke ("CheckEndScene", stTools.endSceneAtTime - Time.time);
 		}
 	}
 

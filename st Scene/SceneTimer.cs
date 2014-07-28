@@ -9,7 +9,7 @@ public class SceneTimer : MonoBehaviour {
 
 
 	public float seconds = 60; // timer length
-	public string newScene = ""; // scene to change to, if blank, no scene change
+	public string endScene = ""; // scene to change to, if blank, no scene change
 	public string dictionary = ""; // if provided store timeleft in dict and key
 	public string key = ""; // if provided store timeleft in dict and key
 	[HideInInspector]
@@ -40,8 +40,8 @@ public class SceneTimer : MonoBehaviour {
 		if (timeLeft < 0) {
 			timeLeft = 0;
 			timeElapsed = seconds;
-			if (newScene != "") {
-				stTools.NewScene(newScene);
+			if (endScene != "") {
+				stTools.EndScene(endScene);
 				timerDone = true;
 			}
 		}

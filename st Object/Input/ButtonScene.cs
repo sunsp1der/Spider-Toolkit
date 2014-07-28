@@ -16,6 +16,6 @@ public class ButtonScene : ButtonCallback {
 	}
 
 	void DoScene() {
-		stTools.NewScene(scene);
+		stTools.EndScene(scene);
 	}
 }

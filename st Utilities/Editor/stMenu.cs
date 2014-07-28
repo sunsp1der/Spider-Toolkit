@@ -19,7 +19,7 @@ public class stMenu : EditorWindow {
 	}
 
 	[MenuItem( "Tools/Spider Toolkit/Create/New Scene", false, 0 )]	
-	public static void NewScene() {
+	public static void EndScene() {
 		EditorApplication.SaveCurrentSceneIfUserWantsTo();
 		EditorApplication.NewScene();
 		GameObject stmain = GameObject.Instantiate( Resources.LoadAssetAtPath("Assets/Spider Toolkit/st Main/st Main.prefab", typeof(GameObject)) ) as GameObject;

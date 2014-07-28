@@ -7,7 +7,7 @@ using System.Collections;
 /// </summary>
 public class AlterInt : MonoBehaviour { 
 
-	public enum EventEnum { Start, Remove, NewScene};
+	public enum EventEnum { Start, Remove, EndScene};
 	public enum OperationEnum {Add, SetTo, Multiply};
 
 	[Tooltip("If dictionary and key are set, store data in dictionary")]
@@ -41,8 +41,8 @@ public class AlterInt : MonoBehaviour {
 		} 
 	}
 
-	void OnNewScene() {
-		if (alterOnEvent == EventEnum.NewScene){
+	void OnEndScene() {
+		if (alterOnEvent == EventEnum.EndScene){
 			Alter();
 		}
 	}

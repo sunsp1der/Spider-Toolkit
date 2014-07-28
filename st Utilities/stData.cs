@@ -1,14 +1,13 @@
-﻿using UnityEngine;
+﻿/// St data.
+/// Quick and easy access to stDictionaries. Also network functionality for said dictionaries.
+/// IMPORTANT: Must be attached to stMain object for networking to work
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(stMain))]
 
-/// <summary>
-/// St data.
-/// Quick and easy access to stDictionaries. Also network functionality for said dictionaries.
-/// IMPORTANT: Must be attached to stMain object for networking to work
-/// </summary>
 public class stData : MonoBehaviour {
 	
 	static public Dictionary< string, stDictionary> dictionaries = new Dictionary< string, stDictionary>();
@@ -64,9 +63,7 @@ public class stData : MonoBehaviour {
 	public static void SetupDictionaries () {
 		stDictionary[] dictList = stTools.stMain.GetComponents<stDictionary>();
 		foreach (stDictionary dict in dictList) {
-			if (!dictionaries.ContainsKey(dict.dataName)) {
-				dictionaries.Add( dict.dataName, dict);	
-			}
+			dictionaries[dict.dataName] = dict;
 		}
 		
 	}

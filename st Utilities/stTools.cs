@@ -6,10 +6,10 @@ public static class stTools {
 
 	static stMain _stmain;
 	public static string pendingScene = "";
-	public static float newSceneAtTime = 0;
+	public static float endSceneAtTime = 0;
 
 	/// <summary>
-	/// Just an easy access to the st Main object (not the component on that object!)
+	/// Easy access to the st Main object (not the component on that object!)
 	/// </summary>
 	/// <value>The st main.</value>
 	public static stMain stMain{
@@ -28,7 +28,7 @@ public static class stTools {
 	/// </summary>
 	/// <returns>The hardened axis.</returns>
 	/// <param name="input">Input axis from settings/input.</param>
-	public static float GetAxisHard (string input){
+	public static float GetAxisBool (string input){
 		if (!Input.GetButton(input)) {
 			return 0;
 		}
@@ -109,28 +109,29 @@ public static class stTools {
 	}
 	#endregion
 
-	#region newscene
+	#region endscene
 	/// <summary>
-	/// Load a new level. Use this instead of Application.loadlevel to keep 'st Main' persistent between levels.
-	/// And to allow delays
+	/// Spider Toolkit alternative to Application.loadlevel. 
+	/// Ends a scene after any delays (blackouts etc.) then load a new level.  
+	/// Also keeps 'st Main' persistent between levels.
 	/// </summary>
 	/// <param name="scene">The new scene.</param>
-	public static void NewScene (string scene) {
+	public static void EndScene (string nextScene) {
 
-		pendingScene = scene;
-		BroadcastAll ("OnNewScene", scene);
+		pendingScene = nextScene;
+		BroadcastAll ("OnEndScene", nextScene);
 		// call in stMain's help because it's a monobehavior instance and we can do invokes there
-		stMain.CheckNewScene();
+		stMain.CheckEndScene();
 	}
 
 	/// <summary>
 	/// Switch to pending new scene immediately ignoring delays. Not generally meant to be called by user.
 	/// </summary>
-	public static void DoNewScene () {
+	public static void DoEndScene () {
 		if (pendingScene != "") {
 			string scene = pendingScene;
 			pendingScene = "";
-			newSceneAtTime = 0;
+			endSceneAtTime = 0;
 			stMain.undying = true;
 			stMain.gameObject.transform.parent = null;
 			Application.LoadLevel (scene);
@@ -141,12 +142,12 @@ public static class stTools {
 	/// Call to delay the switch to the pending new scene
 	/// </summary>
 	/// <param name="delaySecs">Delay secs.</param>
-	public static void DelayNewScene( float delaySecs) {
+	public static void DelayEndScene( float delaySecs) {
 		// delay: seconds to wait to destroy
 		if (delaySecs <= 0) return;
 		float dTime = delaySecs + Time.time;
-		if (dTime > newSceneAtTime) {
-			newSceneAtTime = dTime;
+		if (dTime > endSceneAtTime) {
+			endSceneAtTime = dTime;
 		}
 	}
 	

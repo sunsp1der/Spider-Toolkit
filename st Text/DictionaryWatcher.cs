@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// displays stDictionary data in an stText object
+
+using UnityEngine;
 using System;
 using System.Collections;
 
@@ -6,7 +8,6 @@ using System.Collections;
 [RequireComponent(typeof(TextMesh))]
 
 public class DictionaryWatcher : MonoBehaviour {
-	// displays stDictionary data. dictionary is attached to stMain
 
 	public string dictionary;
 	public string key;
