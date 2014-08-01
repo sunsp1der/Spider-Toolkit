@@ -6,15 +6,17 @@ using System.Collections;
 // NOTE: this component has a specialized editor
 
 /// <summary>
-/// Set a starting value for an stDictionary.
+/// Set a starting value for an stDictionary when scene loads.
 /// </summary>
 public class DictionaryStartValue : MonoBehaviour {
 
 	public enum valType { String, Integer, Float, GameObject, Component}
 
-	public string dictionary;
-	public string key;
+	public string dictionary = "Game";
+	public string key = "Score";
 	public valType valueType;
+	[Tooltip("If true, set value even if already set")]
+	public bool overrideValue = true;
 
 	public int intValue = 0;
 	public float floatValue = 0;
@@ -42,7 +44,12 @@ public class DictionaryStartValue : MonoBehaviour {
 			value = componentValue;
 			break;
 		}
-		stData.InitializeDictionaryValue(dictionary, key, value);
+		if (overrideValue) {
+			stData.SetDictionaryValue( dictionary, key, value);
+		}
+		else {
+			stData.InitializeDictionaryValue(dictionary, key, value);
+		}
 	}
 	
 }

@@ -167,6 +167,7 @@ MonoBehaviour:
     totalNumToSpawn: -1
     deleteWhenDone: 0
   placement:
+    matchPosition: 1
     offset: {x: 0, y: -10}
     offsetVariance: {x: 0, y: 0}
     angle: 0

@@ -88,6 +88,7 @@ GameObject:
   - 81: {fileID: 95297863}
   - 114: {fileID: 95297867}
   - 114: {fileID: 95297868}
+  - 114: {fileID: 95297869}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -174,6 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seconds: 30
   endScene: 
+  timerDoneObject: {fileID: 0}
   dictionary: Game
   key: Time
   timeLeft: 0
@@ -198,6 +200,26 @@ MonoBehaviour:
   fadeOutSecs: 1
   blackedOutSecs: 2
   fadeCover: {fileID: 100000, guid: 989e67fcb2110354a94e463581b7b976, type: 2}
+--- !u!114 &95297869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 95297861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1dad08506ec1e449c76d3f86aa721e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dictionary: Game
+  key: Score
+  valueType: 1
+  overrideValue: 1
+  intValue: 0
+  floatValue: 3.29999995
+  stringValue: 
+  gameObjectValue: {fileID: 1794481175}
+  componentValue: {fileID: 0}
 --- !u!1 &182661289
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +233,6 @@ GameObject:
   - 50: {fileID: 182661293}
   - 114: {fileID: 182661292}
   - 114: {fileID: 182661291}
-  - 114: {fileID: 182661290}
   m_Layer: 30
   m_Name: Spawner
   m_TagString: Untagged
@@ -219,22 +240,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &182661290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 182661289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2109948ece57f464d9a6a80c2af0ecff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dictionary: 47616d65
-  key: 53636f7265
-  alterOnEvent: 0
-  operation: 1
-  value: 0
 --- !u!114 &182661291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +272,7 @@ MonoBehaviour:
     totalNumToSpawn: -1
     deleteWhenDone: 0
   placement:
+    matchPosition: 1
     offset: {x: 0, y: 0}
     offsetVariance: {x: 0, y: 0}
     angle: 0
@@ -419,7 +425,6 @@ GameObject:
   - 114: {fileID: 430720865}
   - 114: {fileID: 430720864}
   - 114: {fileID: 430720863}
-  - 114: {fileID: 430720878}
   m_Layer: 0
   m_Name: st Main
   m_TagString: st Main
@@ -1058,25 +1063,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 95297862}
   m_RootOrder: 0
---- !u!114 &430720878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 430720862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c1dad08506ec1e449c76d3f86aa721e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dictionary: Game
-  key: Score
-  valueType: 1
-  intValue: 0
-  floatValue: 3.29999995
-  stringValue: 
-  gameObjectValue: {fileID: 1794481175}
-  componentValue: {fileID: 0}
 --- !u!1 &520737320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,7 +1076,6 @@ GameObject:
   - 50: {fileID: 520737323}
   - 114: {fileID: 520737322}
   - 114: {fileID: 520737321}
-  - 114: {fileID: 520737327}
   m_Layer: 30
   m_Name: Spawner
   m_TagString: Untagged
@@ -1130,6 +1115,7 @@ MonoBehaviour:
     totalNumToSpawn: -1
     deleteWhenDone: 0
   placement:
+    matchPosition: 1
     offset: {x: 0, y: 0}
     offsetVariance: {x: 0, y: 0}
     angle: 0
@@ -1261,22 +1247,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
---- !u!114 &520737327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 520737320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2109948ece57f464d9a6a80c2af0ecff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dictionary: 47616d65
-  key: 53636f7265
-  alterOnEvent: 0
-  operation: 1
-  value: 0
 --- !u!1 &1409063318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,7 +1451,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1700554277}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8.02292824, y: -.140138477, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1510,7 +1480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c056574753c9b489e216f2648c52f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minMagnitude: 1
+  minMagnitude: 0
 --- !u!1 &1794481175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,7 +1584,7 @@ GameObject:
   - 114: {fileID: 1961231315}
   - 114: {fileID: 1961231316}
   - 114: {fileID: 1961231317}
-  - 114: {fileID: 1961231319}
+  - 114: {fileID: 1961231318}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1793,6 +1763,7 @@ MonoBehaviour:
     totalNumToSpawn: -1
     deleteWhenDone: 0
   placement:
+    matchPosition: 1
     offset: {x: 0, y: 0}
     offsetVariance: {x: 0, y: 0}
     angle: 0
@@ -1865,6 +1836,7 @@ MonoBehaviour:
     totalNumToSpawn: -1
     deleteWhenDone: 0
   placement:
+    matchPosition: 1
     offset: {x: 0, y: 0}
     offsetVariance: {x: .349999994, y: .699999988}
     angle: 0
@@ -1896,7 +1868,7 @@ MonoBehaviour:
   - {fileID: 0}
   _Spawn:
     tooltip: 
---- !u!114 &1961231319
+--- !u!114 &1961231318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1904,10 +1876,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 1961231308}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2f8d27732e03b748b36c76bb9d1daed, type: 3}
+  m_Script: {fileID: 11500000, guid: e8d7bbe0d9f1c5a468e7ec7cc30b7f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doRemoveEffects: 1
+  spawnObject: {fileID: 100006, guid: 7b14a1bc8aae18d4ea635305bb3b91e0, type: 2}
+  sound:
+    audioClip: {fileID: 0}
+    loop: 0
+    volume: 1
+    pan: 0
+    locked: 0
+    pitch: 1
+    mySource: {fileID: 0}
+    foldout: 0
+  timing:
+    interval: 2
+    intervalVariance: 1
+    delay: 0
+  count:
+    numToSpawn: 1
+    numToSpawnVariance: 0
+    maxSpawnsInScene: -1
+    totalNumToSpawn: -1
+    deleteWhenDone: 0
+  placement:
+    matchPosition: 0
+    offset: {x: 0, y: 0}
+    offsetVariance: {x: 0, y: 0}
+    angle: 0
+    angleVariance: 0
+    addRotation: 0
+    addVelocity: 0
+    multiplyScale: 0
+    sortToBottom: 0
+    onspawnCallback: 0
+    onspawnedCallback: 0
+  spawnCount: 1
+  spawnedObjects:
+  - {fileID: 0}
+  justSpawned:
+  - {fileID: 0}
+  _Spawn:
+    tooltip: 
 --- !u!1 &1969635138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,7 +1931,6 @@ GameObject:
   - 50: {fileID: 1969635142}
   - 114: {fileID: 1969635141}
   - 114: {fileID: 1969635140}
-  - 114: {fileID: 1969635139}
   m_Layer: 30
   m_Name: Spawner
   m_TagString: Untagged
@@ -1929,22 +1938,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1969635139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1969635138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2109948ece57f464d9a6a80c2af0ecff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dictionary: 47616d65
-  key: 53636f7265
-  alterOnEvent: 0
-  operation: 1
-  value: 0
 --- !u!114 &1969635140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1977,6 +1970,7 @@ MonoBehaviour:
     totalNumToSpawn: -1
     deleteWhenDone: 0
   placement:
+    matchPosition: 1
     offset: {x: 0, y: 0}
     offsetVariance: {x: 0, y: 0}
     angle: 0
@@ -2121,7 +2115,6 @@ GameObject:
   - 50: {fileID: 2010158629}
   - 114: {fileID: 2010158628}
   - 114: {fileID: 2010158633}
-  - 114: {fileID: 2010158634}
   - 114: {fileID: 2010158635}
   - 114: {fileID: 2010158636}
   - 114: {fileID: 2010158637}
@@ -2269,18 +2262,6 @@ MonoBehaviour:
   rotated: 1
   additive: 1
   alignRotation: 1
---- !u!114 &2010158634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2010158627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1321cfa4c2ef81b4fb48e8b064342c12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  asButton: 0
 --- !u!114 &2010158635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2289,11 +2270,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2010158627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2109948ece57f464d9a6a80c2af0ecff, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e43b0023aa3e9c4d806eae112acd0e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dictionary: 47616d65
-  key: 53636f7265
+  dictionary: Game
+  key: Score
+  startValue: 0
+  field:
+    component: {fileID: 0}
+    member: 
   alterOnEvent: 1
   operation: 0
   value: 1
@@ -2329,6 +2314,7 @@ MonoBehaviour:
     totalNumToSpawn: -1
     deleteWhenDone: 0
   placement:
+    matchPosition: 1
     offset: {x: 0, y: 0}
     offsetVariance: {x: 0, y: 0}
     angle: 0
@@ -2397,7 +2383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c056574753c9b489e216f2648c52f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minMagnitude: 1
+  minMagnitude: 0
 --- !u!114 &2010158641
 MonoBehaviour:
   m_ObjectHideFlags: 0

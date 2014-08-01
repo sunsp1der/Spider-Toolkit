@@ -8,16 +8,21 @@ using System.Collections;
 public class RemoveOnCollision : MonoBehaviour {
 
 	[Tooltip("Minimum difference in velocity to count as hit")]
-	public float minMagnitude = 1;
+	public float minMagnitude = 0;
 	
 	void Start () {
+		// only included to show enabled checkbox in editor
 	}
 	
 	void OnCollisionEnter2D (Collision2D info) {
 		if (enabled) {
-			if (info.relativeVelocity.magnitude > minMagnitude) {
-				stTools.Remove(gameObject);
+			if (info.relativeVelocity.magnitude >= minMagnitude) {
+				Invoke ("Remove",0); // we delay this call so that the other object will get collision callback
 			}
 		}
+	}
+
+	void Remove(){
+		stTools.Remove(gameObject);
 	}
 }

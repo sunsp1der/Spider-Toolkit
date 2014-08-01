@@ -43,7 +43,7 @@ public class MultipleLives : MonoBehaviour {
 		if (multipleLivesArchetype.lives == 0) {
 			// all out of lives
 			if (livesGoneObject != null) {
-				multipleLivesArchetype.Invoke("LivesGone", pauseBeforeSpawn);
+				multipleLivesArchetype.Invoke("LivesGone", 0);
 			}
 		}
 		else {

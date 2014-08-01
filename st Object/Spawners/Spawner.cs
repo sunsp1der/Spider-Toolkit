@@ -7,41 +7,62 @@ using System.Collections.Generic;
 public class Spawner : MonoBehaviour {
 	// object spawns other objects
 	// this base spawner can only be activated via script. Just call StartSpawning()
-	
-	public GameObject spawnObject = null; // object to spawn
-	public Sound sound; // sound to play for spawn
+
+	[Tooltip("Object to spawn")]
+	public GameObject spawnObject = null;
+	[Tooltip("Sound to play for spawn")]
+	public Sound sound;
 	
 	[System.Serializable]
 	public class Timing { 
-		public float interval = 2.0f; // seconds until next spawn
-		public float intervalVariance = 1.0f; // interval can vary this many seconds
-		public float delay = 0; // Wait this many seconds before beginning to spawn
+		[Tooltip("Seconds between spawns")]
+		public float interval = 2.0f; 
+		[Tooltip("Interval can vary this many seconds")]
+		public float intervalVariance = 1.0f; 
+		[Tooltip("Wait this many seconds before beginning to spawn")]
+		public float delay = 0; 
 	}
 	public Timing timing;
 	
 	[System.Serializable]
 	public class Count {
-		public int numToSpawn = 1; // Number of objects created per spawn
-		public int numToSpawnVariance = 0; // numToSpawn can vary by this much
-		public int maxSpawnsInScene = -1; // Maximum number of spawned objects in scene at one time (< 0 = unlimited)
-		public int totalNumToSpawn = -1; // Total number of objects owner can create over its lifetime (<0 = unlimited)
-		public bool deleteWhenDone = false; // Delete this object after totalObjectsSpawned have been spawned
+		[Tooltip("Number of objects created per spawn")]
+		public int numToSpawn = 1; 
+		[Tooltip("NumToSpawn can vary by this much")]
+		public int numToSpawnVariance = 0; 
+		[Tooltip("Maximum number of spawned objects in scene at one time (< 0 = unlimited)")]
+		public int maxSpawnsInScene = -1; 
+		[Tooltip("Total number of objects owner can create over its lifetime (<0 = unlimited)")]
+		public int totalNumToSpawn = -1;  
+		[Tooltip("Delete this object after totalObjectsSpawned have been spawned")]
+		public bool deleteWhenDone = false; 
 	}
 	public Count count;
 
 	[System.Serializable]
 	public class Placement {
-		public Vector2 offset = new Vector2(0,0); // offset from center of spawner, in world units
-		                                          // offset will be rotated with spawner.
-		public Vector2 offsetVariance = new Vector2(0,0); //offset can vary this much
-		public float angle = 0; // Angle to add to spawned object's rotation (after offset)
-		public float angleVariance = 0; // angle can vary by this much
-		public bool addRotation = true; // Add owner's rotation to spawned object's rotation
-		public bool addVelocity = false; // Add owner's velocity to spawned object's velocity"],
-		public bool multiplyScale = false; // Multiply spawned object's scale by owner's scale
-		public bool sortToBottom = true; // move object below other objects after spawning,
-		public bool onspawnCallback = false; // SendMessage OnSpawn(obj) to this object
-		public bool onspawnedCallback = false; // SendMessage OnSpawned() to spawned objects
+		[Tooltip("Start position of spawned object is spawner's position")]
+		public bool matchPosition = true;
+		[Tooltip("Offset of spawn location, in world units.\nOffset will be rotated with spawner.")]
+		public Vector2 offset = new Vector2(0,0); 
+		[Tooltip("Offset can vary this much")]
+		public Vector2 offsetVariance = new Vector2(0,0); 
+		[Tooltip("Angle to add to spawned object's rotation (after offset)")]
+		public float angle = 0;  
+		[Tooltip("Angle can vary by this much")]
+		public float angleVariance = 0;  
+		[Tooltip("Add owner's rotation to spawned object's rotation")]
+		public bool addRotation = true; 
+		[Tooltip("Add owner's velocity to spawned object's velocity")]
+		public bool addVelocity = false; 
+		[Tooltip("Multiply spawned object's scale by owner's scale")]
+		public bool multiplyScale = false; 
+		[Tooltip("Move object below other objects after spawning")]
+		public bool sortToBottom = true; 
+		[Tooltip("SendMessage OnSpawn(obj) to this object")]
+		public bool onspawnCallback = false;  
+		[Tooltip("SendMessage OnSpawned() to spawned objects")]
+		public bool onspawnedCallback = false;  
 	}
 	public Placement placement;
 
@@ -85,7 +106,7 @@ public class Spawner : MonoBehaviour {
 			}
 
 			// ACTUAL CREATION OF OBJECT HERE
-			// create and track object
+			// create object
 			GameObject obj = stTools.Spawn( spawnObject);
 
 			// sort new object to bottom
@@ -101,7 +122,9 @@ public class Spawner : MonoBehaviour {
 			spawnCount++;
 			// set up position and rotation
 			Quaternion oldrot = obj.transform.rotation;
-			obj.transform.position = gameObject.transform.position;
+			if (placement.matchPosition) {
+				obj.transform.position = gameObject.transform.position;
+			}
 			obj.transform.position += new Vector3(
 					placement.offset.x + Random.Range (-placement.offsetVariance.x, placement.offsetVariance.x),
 					placement.offset.y + Random.Range (-placement.offsetVariance.y, placement.offsetVariance.y),0);
@@ -118,6 +141,12 @@ public class Spawner : MonoBehaviour {
 				}
 			}
 			// set up scale
+			if (placement.multiplyScale) {
+				obj.transform.localScale = new Vector3(gameObject.transform.localScale.x * obj.transform.localScale.x,
+				                                        gameObject.transform.localScale.y * obj.transform.localScale.y,
+				                                        gameObject.transform.localScale.z * obj.transform.localScale.z);
+			}
+
 			// callbacks
 			if (placement.onspawnedCallback)
 			{

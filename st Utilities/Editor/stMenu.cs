@@ -36,10 +36,11 @@ public class stMenu : EditorWindow {
 		bool showChildren = true;
 		Dictionary<string,string> layers = new Dictionary<string, string>()
 		{
-				{"User Layer 28","Player"},
-				{"User Layer 29","Player Shot"},
-				{"User Layer 30","Enemy"},
-				{"User Layer 31","Enemy Shot"},
+			{"User Layer 27","Object"},
+			{"User Layer 28","Player"},
+			{"User Layer 29","Player Shot"},
+			{"User Layer 30","Enemy"},
+			{"User Layer 31","Enemy Shot"},
 		};
 		bool errors = false;
 		while (it.NextVisible(showChildren))

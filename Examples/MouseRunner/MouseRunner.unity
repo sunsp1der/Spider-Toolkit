@@ -223,7 +223,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
 --- !u!114 &213525341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +256,7 @@ MonoBehaviour:
     totalNumToSpawn: -1
     deleteWhenDone: 0
   placement:
+    matchPosition: 1
     offset: {x: 0, y: -10}
     offsetVariance: {x: 0, y: 0}
     angle: 0
@@ -333,7 +334,7 @@ Prefab:
       objectReference: {fileID: 1962640772}
     - target: {fileID: 5000000, guid: 0d26a548656a99a4890c7dfacaff98b2, type: 2}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5000000, guid: 0d26a548656a99a4890c7dfacaff98b2, type: 2}
       propertyPath: m_Mass
@@ -771,7 +772,7 @@ Transform:
   m_Children:
   - {fileID: 1062477427}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
 --- !u!114 &527816479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,6 +976,7 @@ MonoBehaviour:
     totalNumToSpawn: -1
     deleteWhenDone: 1
   placement:
+    matchPosition: 1
     offset: {x: 0, y: 0}
     offsetVariance: {x: 0, y: 0}
     angle: 0
@@ -1093,7 +1095,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!1 &817219959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,6 +1108,7 @@ GameObject:
   - 92: {fileID: 817219962}
   - 124: {fileID: 817219961}
   - 81: {fileID: 817219960}
+  - 114: {fileID: 817219965}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1178,7 +1181,27 @@ Transform:
   m_Children:
   - {fileID: 1962640759}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
+--- !u!114 &817219965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 817219959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1dad08506ec1e449c76d3f86aa721e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dictionary: Game
+  key: Score
+  valueType: 1
+  overrideValue: 1
+  intValue: 0
+  floatValue: 0
+  stringValue: 
+  gameObjectValue: {fileID: 0}
+  componentValue: {fileID: 0}
 --- !u!1 &823513272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,6 +1254,7 @@ MonoBehaviour:
     totalNumToSpawn: -1
     deleteWhenDone: 0
   placement:
+    matchPosition: 1
     offset: {x: 0, y: 0}
     offsetVariance: {x: 5, y: 1}
     angle: 0
@@ -1359,7 +1383,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!1 &828785441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2785,7 +2809,7 @@ Rigidbody2D:
   m_AngularDrag: 20
   m_GravityScale: 0
   m_FixedAngle: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2882,7 +2906,7 @@ Transform:
   m_LocalScale: {x: .619629622, y: .619628668, z: 1.51242614}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 2
 --- !u!114 &1316829188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2916,6 +2940,7 @@ MonoBehaviour:
     totalNumToSpawn: -1
     deleteWhenDone: 0
   placement:
+    matchPosition: 1
     offset: {x: 0, y: 0}
     offsetVariance: {x: 0, y: 0}
     angle: 0
@@ -3036,6 +3061,7 @@ MonoBehaviour:
     totalNumToSpawn: -1
     deleteWhenDone: 0
   placement:
+    matchPosition: 1
     offset: {x: 0, y: 0}
     offsetVariance: {x: 5, y: 1}
     angle: 0
@@ -3633,6 +3659,7 @@ MonoBehaviour:
     totalNumToSpawn: -1
     deleteWhenDone: 0
   placement:
+    matchPosition: 1
     offset: {x: 0, y: 0}
     offsetVariance: {x: 0, y: 0}
     angle: 0
@@ -3681,11 +3708,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1901956419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2109948ece57f464d9a6a80c2af0ecff, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e43b0023aa3e9c4d806eae112acd0e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dictionary: 47616d65
-  key: 53636f7265
+  dictionary: Game
+  key: Score
+  startValue: 0
+  field:
+    component: {fileID: 0}
+    member: 
   alterOnEvent: 1
   operation: 0
   value: 1
@@ -3711,7 +3742,6 @@ GameObject:
   - 114: {fileID: 1962640761}
   - 114: {fileID: 1962640773}
   - 114: {fileID: 1962640760}
-  - 114: {fileID: 1962640774}
   m_Layer: 0
   m_Name: st Main
   m_TagString: st Main
@@ -4361,22 +4391,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248ca053096f8b74fac0b509eb63e253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1962640774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1962640758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c1dad08506ec1e449c76d3f86aa721e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dictionary: Game
-  key: Score
-  valueType: 1
-  intValue: 0
-  floatValue: 0
-  stringValue: 
-  gameObjectValue: {fileID: 0}
-  componentValue: {fileID: 0}

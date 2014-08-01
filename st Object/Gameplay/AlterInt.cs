@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-[AddComponentMenu("st Object/Gameplay/Alter Integer")]
+[AddComponentMenu("st Object/Gameplay/Alter Int")]
 
 /// <summary>
 /// Change an stDictionary and/or component integer value on object events
@@ -11,9 +11,9 @@ public class AlterInt : MonoBehaviour {
 	public enum OperationEnum {Add, SetTo, Multiply};
 
 	[Tooltip("If dictionary and key are set, store data in dictionary")]
-	public string dictionary = "";
+	public string dictionary = "Game";
 	[Tooltip("If dictionary and key are set, store data in dictionary")]
-	public string key = "";
+	public string key = "Score";
 	[Tooltip("If dictionary key doesn't exist, set value to this")]
 	public int startValue = 0;
 	[Tooltip("Component field to alter. Make sure it's an integer!")]

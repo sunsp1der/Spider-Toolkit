@@ -29,6 +29,7 @@ public class DictionaryStartValueEditor : Editor {
 			myTarget.componentValue = (Behaviour)EditorGUILayout.ObjectField("Value", myTarget.componentValue, typeof(Behaviour), true);
 			break;
 		}
+		myTarget.overrideValue = EditorGUILayout.Toggle("Override Value", myTarget.overrideValue);
 	}
 
 
