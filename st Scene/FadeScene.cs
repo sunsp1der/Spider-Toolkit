@@ -16,7 +16,7 @@ public class FadeScene : MonoBehaviour {
 
 	void Start() {
 		if (fadeInSecs != 0 && fadeCover) {
-			fadeCoverInstance = (GameObject) Instantiate((GameObject)Resources.LoadAssetAtPath("Assets/Spider Toolkit/st Scene/FadeSceneObject.prefab", typeof(GameObject)));
+			fadeCoverInstance = (GameObject) Instantiate((GameObject)Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Scene/FadeSceneObject.prefab", typeof(GameObject)));
 			fadeCoverInstance.transform.parent = Camera.main.transform;
 			fadeCoverInstance.transform.localPosition =  new Vector3(0,0,1);
 			Fade fader = fadeCoverInstance.GetComponent<Fade>();
@@ -28,7 +28,7 @@ public class FadeScene : MonoBehaviour {
 
 	void OnEndScene(string sceneName) {
 		stTools.DelayEndScene( fadeOutSecs + blackedOutSecs);
-		fadeCoverInstance = (GameObject) Instantiate((GameObject)Resources.LoadAssetAtPath("Assets/Spider Toolkit/st Scene/FadeSceneObject.prefab", typeof(GameObject)));
+		fadeCoverInstance = (GameObject) Instantiate((GameObject)Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Scene/FadeSceneObject.prefab", typeof(GameObject)));
 		Fade fader = fadeCoverInstance.GetComponent<Fade>();
 		fader.fadeInSeconds = fadeOutSecs; // we want our blackness to fade in so our scene fades out!
 		fader.fadeOutSeconds = 0; 
