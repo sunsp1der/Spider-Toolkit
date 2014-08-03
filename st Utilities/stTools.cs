@@ -21,7 +21,27 @@ public static class stTools {
 		}
 	}
 
-	#region miscellaneous utilities
+	#region miscellaneous utility functions
+
+	/// <summary>
+	/// Makes a unique name for a gameobject. If any other objects have the name nameRoot,
+	/// this will add a unique number to the end.
+	/// </summary>
+	/// <returns>The unique name.</returns>
+	/// <param name="nameRoot">The un-numbered name</param>
+	/// <param name="forceNumber">If no object called nameRoot exists, add the number 1;
+	public static string MakeUniqueObjectName (string nameRoot, bool forceNumber=false){
+		string name = nameRoot;
+		int num = 1;
+		if (forceNumber) {
+			name += " 1";
+		}
+		while (GameObject.Find(name)) {
+			num++;
+			name = nameRoot + " " + num.ToString();
+		}
+		return name;
+	}
 
 	/// <summary>
 	/// Gets the input axis as a 1, 0, or -1 (no auto softening).

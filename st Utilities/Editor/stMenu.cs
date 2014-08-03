@@ -6,19 +6,25 @@ using System.Collections.Generic;
 
 public class stMenu : EditorWindow {			
 
-	[MenuItem( "Tools/Spider-Toolkit/Create/Object", false, 0 )]	
+	[MenuItem( "Tools/Spider-Toolkit/Create Object", false, 0 )]	
 	public static void NewObject() {
 		GameObject noob = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Object/st Object.prefab", typeof(GameObject)));
-		noob.name = "Object";
+		noob.name = stTools.MakeUniqueObjectName("Object", true);
 	}
 
-	[MenuItem( "Tools/Spider-Toolkit/Create/Text", false, 0 )]	
+	[MenuItem( "Tools/Spider-Toolkit/Create Text", false, 0 )]	
 	public static void NewText() {
 		GameObject noob = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Text/st Text.prefab", typeof(GameObject)));
-		noob.name = "Text";
+		noob.name = stTools.MakeUniqueObjectName("Text", true);
 	}
 
-	[MenuItem( "Tools/Spider-Toolkit/Create/New Scene", false, 0 )]	
+	[MenuItem( "Tools/Spider-Toolkit/Create Button", false, 0 )]	
+	public static void NewButton() {
+		GameObject noob = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Object/st Button.prefab", typeof(GameObject)));
+		noob.name = stTools.MakeUniqueObjectName("Button", true);
+	}
+
+	[MenuItem( "Tools/Spider-Toolkit/New Scene", false, 0 )]	
 	public static void EndScene() {
 		EditorApplication.SaveCurrentSceneIfUserWantsTo();
 		EditorApplication.NewScene();
@@ -36,7 +42,8 @@ public class stMenu : EditorWindow {
 		bool showChildren = true;
 		Dictionary<string,string> layers = new Dictionary<string, string>()
 		{
-			{"User Layer 27","Object"},
+			{"User Layer 26","Collide All"},
+			{"User Layer 27","No Collide"},
 			{"User Layer 28","Player"},
 			{"User Layer 29","Player Shot"},
 			{"User Layer 30","Enemy"},
@@ -52,7 +59,7 @@ public class stMenu : EditorWindow {
 					it.stringValue = layers[it.name];
 				}
 				else if (it.stringValue != layers[it.name]) {
-					Debug.LogError("User Layer 31 already being used. Unable to set up ST default layers!");
+					Debug.LogError("User Layer '"+it.stringValue+"' already assigned. Delete it and try again.");
 					errors = true;
 					break;
 				}
@@ -62,6 +69,17 @@ public class stMenu : EditorWindow {
 			Debug.LogError ("Collision Masks not set up due to error creating layers.");
 		}
 		else {
+			Physics2D.IgnoreLayerCollision(26, 26, true);
+			Physics2D.IgnoreLayerCollision(26, 27, false);
+			Physics2D.IgnoreLayerCollision(26, 28, true);
+			Physics2D.IgnoreLayerCollision(26, 29, true);
+			Physics2D.IgnoreLayerCollision(26, 30, true);
+			Physics2D.IgnoreLayerCollision(26, 31, true);
+			Physics2D.IgnoreLayerCollision(27, 27, false);
+			Physics2D.IgnoreLayerCollision(27, 28, false);
+			Physics2D.IgnoreLayerCollision(27, 29, false);
+			Physics2D.IgnoreLayerCollision(27, 30, false);
+			Physics2D.IgnoreLayerCollision(27, 31, false);
 			Physics2D.IgnoreLayerCollision(28, 28, true);
 			Physics2D.IgnoreLayerCollision(28, 29, true);
 			Physics2D.IgnoreLayerCollision(28, 30, false);

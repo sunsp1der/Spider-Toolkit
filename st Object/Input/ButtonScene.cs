@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO;
 
 [AddComponentMenu("st Object/Input/Button Scene")]
-[RequireComponent(typeof(SpriteRenderer))]
 
 public class ButtonScene : ButtonCallback {
 
-	public string scene;
-	public float sceneDelay = 0; // number of seconds before changing levels
+	[Tooltip("Name of scene to load next. * = reload current scene.")]
+	public string nextScene = "*";
 
-	void OnClick (){
-		if (scene != "") {
-			Invoke("DoScene", sceneDelay);
+	public override void OnClick (){
+		if (nextScene != "") {
+			stTools.EndScene(nextScene);
 		}
-	}
-
-	void DoScene() {
-		stTools.EndScene(scene);
+		else if (nextScene == "*"){
+			stTools.EndScene( Application.loadedLevelName);
+		}
 	}
 }
