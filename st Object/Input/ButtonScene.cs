@@ -10,11 +10,11 @@ public class ButtonScene : ButtonCallback {
 	public string nextScene = "*";
 
 	public override void OnClick (){
-		if (nextScene != "") {
-			stTools.EndScene(nextScene);
-		}
-		else if (nextScene == "*"){
+		if (nextScene == "*"){
 			stTools.EndScene( Application.loadedLevelName);
+		}
+		else if (nextScene != "") {
+			stTools.EndScene(nextScene);
 		}
 	}
 }

@@ -173,9 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258982cdd5ee5c24399f3ad328648c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seconds: 30
+  seconds: 5
   endScene: 
-  timerDoneObject: {fileID: 0}
+  timerDoneObject: {fileID: 100006, guid: 7b14a1bc8aae18d4ea635305bb3b91e0, type: 2}
   dictionary: Game
   key: Time
   timeLeft: 0
@@ -1726,7 +1726,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1961231308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.00686007738, y: -3.72154379, z: 0}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
   m_LocalScale: {x: .55090034, y: .550899625, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1911,7 +1911,7 @@ MonoBehaviour:
     sortToBottom: 0
     onspawnCallback: 0
     onspawnedCallback: 0
-  spawnCount: 1
+  spawnCount: 5
   spawnedObjects:
   - {fileID: 0}
   justSpawned:

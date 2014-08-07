@@ -5,8 +5,9 @@ using System.Collections.Generic;
 [AddComponentMenu("st Object/Spawners/Spawner")]
 
 public class Spawner : MonoBehaviour {
-	// object spawns other objects
-	// this base spawner can only be activated via script. Just call StartSpawning()
+	// Object spawns other objects
+	// This base spawner can only be activated via script with StartSpawning()
+	// This class is made as a base for other spawning classes
 
 	[Tooltip("Object to spawn")]
 	public GameObject spawnObject = null;
@@ -84,7 +85,7 @@ public class Spawner : MonoBehaviour {
 		if (spawnObject == null){
 			return justSpawned;
 		}
-		// clean up list of spawnedObjects
+		// clean up list of spawnedObjects, removing all that were deleted
 		for (int i = spawnedObjects.Count - 1; i >= 0; i--) {
 			if (spawnedObjects[i] == null) {
 				spawnedObjects.RemoveAt(i);
@@ -128,7 +129,9 @@ public class Spawner : MonoBehaviour {
 			obj.transform.position += new Vector3(
 					placement.offset.x + Random.Range (-placement.offsetVariance.x, placement.offsetVariance.x),
 					placement.offset.y + Random.Range (-placement.offsetVariance.y, placement.offsetVariance.y),0);
-			obj.transform.RotateAround( gameObject.transform.position, Vector3.forward, gameObject.transform.rotation.eulerAngles.z);
+			if (placement.matchPosition) {
+				obj.transform.RotateAround( gameObject.transform.position, Vector3.forward, gameObject.transform.rotation.eulerAngles.z);
+			}
 			if (!placement.addRotation) {
 				obj.transform.rotation = oldrot;
 			}

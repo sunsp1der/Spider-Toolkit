@@ -30,7 +30,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   - 61: {fileID: 6100000}
-  m_Layer: 10
+  m_Layer: 27
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.52343082, y: -2.5845623, z: 9}
+  m_LocalPosition: {x: 0, y: -.800209165, z: 0}
   m_LocalScale: {x: .662857115, y: .662857115, z: 0}
   m_Children: []
   m_Father: {fileID: 400006}
@@ -88,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.06925297, y: -1.43198693, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400006}
@@ -100,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.45028591, y: -2.77039623, z: 10}
+  m_LocalPosition: {x: 0, y: -.785196543, z: 10}
   m_LocalScale: {x: .406971633, y: .40697059, z: 0}
   m_Children: []
   m_Father: {fileID: 400006}
@@ -112,7 +112,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.28708363, y: 2.60210967, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -182,8 +182,8 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: .400000006
   m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
+  m_Anchor: 4
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 14
   m_FontStyle: 0
@@ -203,8 +203,8 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: .400000006
   m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
+  m_Anchor: 4
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 14
   m_FontStyle: 0
@@ -273,8 +273,7 @@ MonoBehaviour:
     mySource: {fileID: 0}
     foldout: 0
   onClickCallback: 1
-  scene: PointShoot
-  sceneDelay: 0
+  nextScene: '*'
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
