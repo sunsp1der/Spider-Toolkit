@@ -1109,6 +1109,7 @@ GameObject:
   - 124: {fileID: 817219961}
   - 81: {fileID: 817219960}
   - 114: {fileID: 817219965}
+  - 114: {fileID: 817219966}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1196,12 +1197,27 @@ MonoBehaviour:
   dictionary: Game
   key: Score
   valueType: 1
-  overrideValue: 1
+  overrideValue: 0
   intValue: 0
   floatValue: 0
   stringValue: 
   gameObjectValue: {fileID: 0}
   componentValue: {fileID: 0}
+--- !u!114 &817219966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 817219959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff57c42c1bffd3c42bbcf275429493e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInSecs: 2
+  fadeOutSecs: 2
+  blackedOutSecs: 0
+  fadeCover: {fileID: 100000, guid: 989e67fcb2110354a94e463581b7b976, type: 2}
 --- !u!1 &823513272
 GameObject:
   m_ObjectHideFlags: 0
