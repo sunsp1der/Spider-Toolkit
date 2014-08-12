@@ -8,6 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
+  - 114: {fileID: 11400004}
+  - 114: {fileID: 11400000}
   - 82: {fileID: 8200018}
   - 82: {fileID: 8200016}
   - 82: {fileID: 8200014}
@@ -18,8 +20,6 @@ GameObject:
   - 82: {fileID: 8200004}
   - 82: {fileID: 8200002}
   - 82: {fileID: 8200000}
-  - 114: {fileID: 11400004}
-  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: st Main
   m_TagString: st Main

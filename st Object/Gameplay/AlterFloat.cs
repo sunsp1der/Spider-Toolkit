@@ -16,7 +16,7 @@ public class AlterFloat : MonoBehaviour {
 	public string key = "";
 	[Tooltip("If dictionary key doesn't exist, set value to this")]
 	public float startValue = 0;
-	[Tooltip("Component field to alter. Make sure it's an float!")]
+	[Tooltip("Component field to alter. It has to be a float value!")]
 	public ComponentField field;
 	[Tooltip("Type of event to alter on")]
 	public EventEnum alterOnEvent = EventEnum.Remove;

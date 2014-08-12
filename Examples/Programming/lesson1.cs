@@ -21,8 +21,6 @@ public class lesson1 : MonoBehaviour {
 	// All properties with the 'public' keyword will show up in 
 	// the editor for this component.
 
-	// 'autostart' lets you control if the object automatically starts moving 
-	public bool autostart = true;
 	// 'speed' lets you control how fast your object moves
 	public float speed = 3;
 	// 'leftBorder' controls where the object starts moving to the right
@@ -31,22 +29,8 @@ public class lesson1 : MonoBehaviour {
 	public float rightBorder = 4;
 
 	// The Start function runs when the object is created or when the scene starts
+	// This particular Start function starts the object moving.
 	void Start () {
-
-		// Check the 'autostart' property to see if we should start moving
-		if (autostart) {
-			// Call the StartMove function, defined below.
-			// Calling a function runs all the code inside it.
-			StartMove();
-		}
-	}
-
-	// The StartMove function starts the object moving.
-	// If autostart is false, StartMove has to be called manually from other code.
-	// In order to allow outside calls like this, we make this function public, 
-	// which lets code outside this component call it.
-	public void StartMove(){
-
 		// 'rigidbody2D' controls the physics of a Unity 2D object.
 		// The velocity of rigidbody2D controls its speed.
 		// In order to set the velocity, we have to create a new
@@ -57,7 +41,7 @@ public class lesson1 : MonoBehaviour {
 		// This makes the object move to the right.
 		rigidbody2D.velocity = new Vector2 (speed, 0);
 	}
-
+	
 	// The Update function is called automatically once per frame
 	// We will be using Update to check if we need to start moving the other direction.
 	void Update () {

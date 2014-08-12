@@ -8,14 +8,19 @@ using System.Collections;
 
 
 public class ControlsRotateDrive : MonoBehaviour {
-	
-	public float angularVelocity = 50; // how fast to turn
+
+	[Tooltip("how fast to turn")]
+	public float angularVelocity = 50;  
 	public float speed = 5;
 	public float backwardSpeed = 5;
-	public bool accelerate = false; // if true, speed is acceleration not velocity
-	public bool softenInput = false; // input increases/decreases gradually
-	public string horizontalInput = "Horizontal"; // see project settings/input
-	public string verticalInput = "Vertical"; // see project settings/input
+	[Tooltip("If true, speed is acceleration not velocity. Rigidbody2D's isKinematic must be false if you want it to slow automatically!")]
+	public bool accelerate = false; 
+	[Tooltip("input increases/decreases gradually")]
+	public bool softenInput = false; 
+	[Tooltip("see project settings/input")]
+	public string horizontalInput = "Horizontal"; 
+	[Tooltip("see project settings/input")]
+	public string verticalInput = "Vertical"; 
 	
 	// Update is called once per frame
 	void Update () { 
@@ -43,7 +48,7 @@ public class ControlsRotateDrive : MonoBehaviour {
 			move = new Vector2(Mathf.Cos(a) * -backwardSpeed, Mathf.Sin(a) * -backwardSpeed);
 		}
 		if (accelerate) {
-			rigidbody2D.AddForce( move);
+			rigidbody2D.velocity += move * 0.01f;
 		}
 		else {
 			rigidbody2D.velocity = move;

@@ -1,29 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
-[AddComponentMenu("st Object/Gameplay/Alter Int")]
+[AddComponentMenu("st Object/Gameplay/Alter Float")]
 
 /// <summary>
-/// Change an stDictionary and/or component integer value on object events
+/// Change an stDictionary and/or component float value on object events
 /// </summary>
-public class AlterInt : MonoBehaviour { 
+public class AlterValue : MonoBehaviour { 
 
 	public enum EventEnum { Start, Remove, EndScene};
 	public enum OperationEnum {Add, SetTo, Multiply};
 
-	[Tooltip("If dictionary and key are set, store data in dictionary")]
-	public string dictionary = "Game";
-	[Tooltip("If dictionary and key are set, store data in dictionary")]
-	public string key = "Score";
-	[Tooltip("If dictionary key doesn't exist, set value to this")]
-	public int startValue = 0;
-	[Tooltip("Component field to alter. It has to be an int value!")]
+	[Tooltip("If dictionary and key are set, store data in dictionary.")]
+	public string dictionary = "";
+	[Tooltip("If dictionary and key are set, store data in dictionary.")]
+	public string key = "";
+	[Tooltip("If dictionary key doesn't exist, set value to this. Use DictionaryStartValue component if you want an int.")]
+	public float startValue = 0;
+	[Tooltip("Component field to alter.")]
 	public ComponentField field;
 	[Tooltip("Type of event to alter on")]
 	public EventEnum alterOnEvent = EventEnum.Remove;
 	[Tooltip("Ttype of change to make")]
 	public OperationEnum operation = OperationEnum.Add; 
 	[Tooltip("Amount to change")]
-	public int value = 1;
+	public float value = 1;
+
 	stDictionary dict = null;
 
 	void Start() {
@@ -48,18 +49,19 @@ public class AlterInt : MonoBehaviour {
 	}
 
 	void Alter() {
+		if (field.member)
 		switch (operation) {
 		case OperationEnum.Add:
-			if (dict) dict.Set (key, dict.GetInt(key) + value);
-			if (field.member != "") field.SetValue (field.GetInt() + value);
+			if (dict) dict.Set (key, dict.GetFloat(key) + value);
+			if (field.member != "") field.SetValue (field.GetFloat() + value);
 			break;
 		case OperationEnum.SetTo:
 			if (dict) dict.Set (key, value);
 			if (field.member != "") field.SetValue (value);
 			break;
 		case OperationEnum.Multiply:
-			if (dict) dict.Set (key, dict.GetInt(key) * value);
-			if (field.member != "") field.SetValue (field.GetInt() * value);
+			if (dict) dict.Set (key, dict.GetFloat(key) * value);
+			if (field.member != "") field.SetValue (field.GetFloat() * value);
 			break;
 		}
 	}

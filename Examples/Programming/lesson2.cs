@@ -23,9 +23,12 @@ public class lesson2 : MonoBehaviour {
 	// destination will store where the object is currently moving to
 	Vector3 destination;
 
-	// explained in lesson1
+	// The Start function runs when the object is created or when the scene starts
+	// If autostart is false, StartMove has to be called manually from other code.
 	void Start () {
 		if (autostart) {
+			// Call the StartMove function, defined below.
+			// Calling a function runs all the code inside it.
 			StartMove();
 		}
 		// The Start function is a good place to initialize values
@@ -33,7 +36,10 @@ public class lesson2 : MonoBehaviour {
 		originalPosition = transform.position;
 	}
 
-	// explained in lesson1
+	// The StartMove function starts the object moving.
+	// If autostart is false, StartMove has to be called manually from other code.
+	// In order to allow outside calls like this, we make this function public, 
+	// which lets code outside this component call it.
 	public void StartMove() {
 		// Call the SetNextMove function, and send it our currentDirection
 		SetNextMove(currentDirection);
@@ -126,7 +132,8 @@ public class lesson2 : MonoBehaviour {
  * 		Up and back, right and back a little faster, down and back a little faster still etc.
  * 3) Make the object go a little faster after each FULL SET of movements.
  * 		Up, right, down, left, faster, up, right, down, left, even faster
- * 3) Move twice in each direction before changing to the next. That is,
+ * 4) Move twice in each direction before changing to the next. That is,
  * 		up and back, up and back, right and back, right and back, etc.
+ * 5) Create a new component that has a Start method that calls this object's StartMove method 
  * 
  */
