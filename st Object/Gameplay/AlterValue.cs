@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-[AddComponentMenu("st Object/Gameplay/Alter Float")]
+/*[AddComponentMenu("st Object/Gameplay/Alter Float")]
 
 /// <summary>
 /// Change an stDictionary and/or component float value on object events
@@ -65,4 +65,4 @@ public class AlterValue : MonoBehaviour {
 			break;
 		}
 	}
-}
+}*/
