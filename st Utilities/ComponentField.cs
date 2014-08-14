@@ -15,35 +15,21 @@ public class ComponentField {
 
 	public int GetInt() {
 		var data = Introspector.GetValue( component, member);
-		if (data is int) {
-			return (int) data;
-		}
-		else {
-			Debug.LogError ("GetInt invalid for "+component.ToString()+" - "+member);
-			return 0;
-		}
+		return (int) data;
 	}
 
 	public float GetFloat() {
 		var data = Introspector.GetValue( component, member);
-		if (data is float) {
-			return (float) data;
-		}
-		else {
-			Debug.LogError ("GetFloat invalid for "+component.ToString()+" - "+member);
-			return 0;
-		}
+		return (float) data;
 	}
 
-	public void SetValue( int val) {
+	public object GetObject() {
+		var data = Introspector.GetValue( component, member);
+		return data;
+	}
+
+	public void SetValue( object val) {
 		Introspector.SetValue( component, member, val);
 	}
 
-	public void SetValue( float val) {
-		Introspector.SetValue( component, member, val);
-	}
-
-	public void SetValue( string val) {
-		Introspector.SetValue( component, member, val);
-	}
 }
