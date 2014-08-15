@@ -15,12 +15,12 @@ public class ComponentField {
 
 	public int GetInt() {
 		var data = Introspector.GetValue( component, member);
-		return (int) data;
+		return Convert.ToInt32(data);
 	}
 
 	public float GetFloat() {
 		var data = Introspector.GetValue( component, member);
-		return (float) data;
+		return (float)Convert.ToDouble(data);
 	}
 
 	public object GetObject() {

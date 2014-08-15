@@ -2,19 +2,23 @@
 using System.Collections;
 
 public class lesson2 : MonoBehaviour {
-	// The lesson2 component moves an object back and forth in the cardinal directions, rotating 
+	// The lesson2 component moves an object back and forth in the four directions, rotating 
 	// through up, right, down, left.
-
-	// Instead of commenting your editor properties, you can add tooltips visible in the editor. Better!
+	 
+	// You can add information about your properties with "attributes", which use square brackets.
+	// Using the Tooltip attribute, you can add tooltips visible in the Unity editor. 
 	[Tooltip("Start object automatically")]
 	public bool autostart = true;
+
 	[Tooltip("How fast the object moves")]
 	public float speed = 10;
+
 	[Tooltip("How far the object moves")]
 	public float distance = 3;
 
 	// Properties without the 'public' keyword can only be 
 	// used internally by the class they are declared in.
+
 	// currentDirection will track the direction the object is currently moving.
 	// 0 is up, 1 is right, 2 is down, 3 is left
 	int currentDirection = 0;
@@ -55,7 +59,7 @@ public class lesson2 : MonoBehaviour {
 		switch (currentDirection) 
 		{
 		case 0:		
-			// We need to move up, so set our destination to the start point + 'distance' in the y axis
+			// Move up, so set our destination to the start point + 'distance' in the y axis
 			// Notice that you have to create a new vector to set a vector value.
 			destination = new Vector3(originalPosition.x, 
 			                          originalPosition.y + distance, 
@@ -63,19 +67,19 @@ public class lesson2 : MonoBehaviour {
 			// the break statement is required when ending a switch case
 			break;
 		case 1:		
-			// We need to move right, so set our destination to the start point + 'distance' in the x axis
+			// Move right, so set our destination to the start point + 'distance' in the x axis
 			destination = new Vector3(originalPosition.x + distance, 
 			                          originalPosition.y, 
 			                          originalPosition.z);
 			break;
 		case 2:		
-			// We need to move down, so set our destination to the start point - 'distance' in the y axis
+			// Move down, so set our destination to the start point - 'distance' in the y axis
 			destination = new Vector3(originalPosition.x, 
 			                          originalPosition.y - distance, 
 			                          originalPosition.z);
 			break;
 		case 3:		
-			// We need to move left, so set our destination to the start point - 'distance' in the x axis
+			// Move left, so set our destination to the start point - 'distance' in the x axis
 			destination = new Vector3(originalPosition.x - distance, 
 			                          originalPosition.y, 
 			                          originalPosition.z);
@@ -85,7 +89,7 @@ public class lesson2 : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		// We use the Lerp function to change a value smoothly over time.
+		// Use the Lerp function to change a value smoothly over time.
 		// It takes the arguments 'from point', 'to point', and 't' which
 		// is a time value and is usually scaled by a speed value.
 		// Basically, Lerp returns a point slightly closer to the 'to point'.
