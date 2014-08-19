@@ -6,6 +6,7 @@ using System.Collections;
 public class DestroyOnEndScene : MonoBehaviour {
 	// Destroy this object when EndScene is called
 	// Useful for delayed EndScenes
+
 	public bool doRemoveEffects;
 
 	void OnEndScene(string sceneName) {

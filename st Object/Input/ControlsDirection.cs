@@ -8,12 +8,18 @@ using System.Collections;
 
 public class ControlsDirection : MonoBehaviour {
 
+	[Tooltip("Speed in each direction. Use zero to limit motion to one axis.")]
 	public Vector2 moveVelocity = new Vector2(3,3);
-	public bool faceMotion = true; // change rotation to direction of motion
-	public bool flipLeft = false; // mirror character when moving left 
-	public bool softenInput = false; // input increases/decreases gradually							       // good for side view
-	public string horizontalInput = "Horizontal"; // see project settings/input
-	public string verticalInput = "Vertical"; // see project settings/input
+	[Tooltip("Change rotation of object to direction of motion")]
+	public bool faceMotion = true; 
+	[Tooltip("Mirror character when moving left. Good for side views.")]
+	public bool flipLeft = false; 
+	[Tooltip("Input increases/decreases gradually")]
+	public bool softenInput = false; 
+	[Tooltip("See project settings/input")]
+	public string horizontalInput = "Horizontal"; 
+	[Tooltip("See project settings/input")]
+	public string verticalInput = "Vertical"; 
 
 	bool facingRight = true;
 

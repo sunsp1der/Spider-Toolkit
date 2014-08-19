@@ -9,17 +9,19 @@ using System.Collections;
 
 public class ControlsRotateDrive : MonoBehaviour {
 
-	[Tooltip("how fast to turn")]
+	[Tooltip("How fast to turn")]
 	public float angularVelocity = 50;  
+	[Tooltip("How fast to move. Use zero for rotate only.")]
 	public float speed = 5;
+	[Tooltip("How fast to move.")]
 	public float backwardSpeed = 5;
 	[Tooltip("If true, speed is acceleration not velocity. Rigidbody2D's isKinematic must be false if you want it to slow automatically!")]
 	public bool accelerate = false; 
-	[Tooltip("input increases/decreases gradually")]
+	[Tooltip("Input increases/decreases gradually")]
 	public bool softenInput = false; 
-	[Tooltip("see project settings/input")]
+	[Tooltip("See project settings/input")]
 	public string horizontalInput = "Horizontal"; 
-	[Tooltip("see project settings/input")]
+	[Tooltip("See project settings/input")]
 	public string verticalInput = "Vertical"; 
 	
 	// Update is called once per frame

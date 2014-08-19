@@ -10,29 +10,31 @@ public class MultipleLives : MonoBehaviour {
 	// after being Destroyed. stObject.archetype will be set to true on 
 	// original object.
 
-	public int lives = 3; // number of lives 
-	public float pauseBeforeSpawn = 2; // number of seconds before respawn
-	public GameObject livesGoneObject; // spawn this object when lives run out
-								       // if None, don't spawn anything. To go to 
-								       // a new level, spawn an object with a 
-	                                   // Level Timer component
-	
+	[Tooltip("Number of times to respawn. -1 is infinite.")]
+	public int lives = 3; 
+	[Tooltip("Number of seconds after removal to respawn.")]
+	public float secsBeforeSpawn = 2; // no pun intended
+	[Tooltip("After last life is gone, this object is spawned. To go to a new level, spawn an object with LevelTimer component.")]
+	public GameObject livesGoneObject; 
+
 	MultipleLives multipleLivesArchetype;
 
 	void Awake() {
-		if (multipleLivesArchetype == null) {
-			// we are in original archetype. Store this component for future lives
-			lives--;
-			multipleLivesArchetype = this;
+		if (GetComponent<stObject>().archetype == false && GetComponent<stObject>().myArchetype == null) {
+			GetComponent<stObject>().ArchetypeAwake();
 		}
-		else {
-			// use this component from the original archetype
+		if (multipleLivesArchetype != null) {
 			lives = multipleLivesArchetype.lives;
 		}
 	}
 
 	// special called by stObject
 	void ArchetypeStart() { 
+		// we are in original archetype. Store this component for future lives
+		if (lives>0) {
+			lives--;
+		}
+		multipleLivesArchetype = this;
 		Respawn ();
 	}
 
@@ -48,9 +50,11 @@ public class MultipleLives : MonoBehaviour {
 		}
 		else {
 			// next life
-			multipleLivesArchetype.lives--;
+			if (multipleLivesArchetype.lives>0) {
+				multipleLivesArchetype.lives--;
+			}
 			// have to use other object because this one is being removed
-			multipleLivesArchetype.Invoke("Respawn", pauseBeforeSpawn);
+			multipleLivesArchetype.Invoke("Respawn", secsBeforeSpawn);
 			//multipleLivesArchetype
 		}
 	}

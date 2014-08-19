@@ -80,7 +80,6 @@ public class AlterValueOverTime : MonoBehaviour {
 					newDictVal = newDictVal.LimitToRange( minimum, maximum);
 					newFieldVal = newFieldVal.LimitToRange( minimum, maximum);
 				}
-				print (dict.GetFloat(key).ToString() +" "+ change.ToString());
 
 				// Set the values, making sure we use correct type
 				if (dict) {

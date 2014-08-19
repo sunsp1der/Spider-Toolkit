@@ -26,6 +26,10 @@ public class stObject : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Set object up as an archetype. 
+	/// Call this from awake function of other components if you want to force an object to be an archetype.
+	/// </summary>
 	public void ArchetypeAwake(){
 		myArchetype = gameObject;
 		archetype = false;
@@ -66,4 +70,5 @@ public class stObject : MonoBehaviour {
 			Invoke ("CheckDestroy", destroyAtTime - Time.time);
 		}
 	}
+
 }

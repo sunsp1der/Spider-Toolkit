@@ -5,9 +5,12 @@ using System.Collections;
 
 public class FaceObject : MonoBehaviour {
 
-	public string targetName = "Player"; // name of the object to be faced
-	public float rotationSpeed = 50; // negative = always face object exactly
-	public float offset = 0; // offset rotation by this much
+	[Tooltip("Name of the object to be faced.")] 
+	public string targetName = "Player"; // using the name allows this component to work even if the object respawns
+	[Tooltip("Negative = always face object exactly")]
+	public float rotationSpeed = 50; 
+	[Tooltip("Offset rotation by this much")]
+	public float offset = 0; 
 
 	GameObject target = null;
 
@@ -20,8 +23,9 @@ public class FaceObject : MonoBehaviour {
 	}
 
 	public void Update () {
-		if (!target) {
+		if (target == null) {
 			FindTarget ();
+			if (target == null) return;
 		}
 		if (target.activeSelf) { // if target is active...
 			// figure out target rotation

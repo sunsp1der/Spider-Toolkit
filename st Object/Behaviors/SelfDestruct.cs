@@ -6,9 +6,12 @@ using System.Collections;
 
 public class SelfDestruct : MonoBehaviour {
 	// Remove object after given amount of time
-	public float timerSecs = 3; // seconds before object self destructs
-	public bool start_automatically = true; // start timer when object is created
-											// otherwise call 'StartTimer' method
+	[Tooltip("Seconds before object self destructs")]
+	public float timerSecs = 3; 
+	[Tooltip("TimerSecs can vary this much")]
+	public float timerSecsVariance = 0;
+	[Tooltip("Start timer when object is created")]
+	public bool start_automatically = true; // otherwise call 'StartTimer' method
 	public bool doRemoveEffects = true;
 	
 	void Start () {
@@ -23,7 +26,7 @@ public class SelfDestruct : MonoBehaviour {
 		if (secs < 0){
 			secs = timerSecs;
 		}
-		Invoke ("Destruct", secs);
+		Invoke ("Destruct", secs + Random.Range(-timerSecsVariance, timerSecsVariance));
 	}
 
 	void Destruct(){

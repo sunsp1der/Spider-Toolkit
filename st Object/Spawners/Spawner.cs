@@ -17,11 +17,13 @@ public class Spawner : MonoBehaviour {
 	[System.Serializable]
 	public class Timing { 
 		[Tooltip("Seconds between spawns")]
-		public float interval = 2.0f; 
+		public float interval = 1; 
 		[Tooltip("Interval can vary this many seconds")]
-		public float intervalVariance = 1.0f; 
+		public float intervalVariance = 0; 
 		[Tooltip("Wait this many seconds before beginning to spawn")]
 		public float delay = 0; 
+		[Tooltip("Delay can vary this many seconds")]
+		public float delayVariance = 0; 
 	}
 	public Timing timing;
 	
@@ -194,7 +196,7 @@ public class Spawner : MonoBehaviour {
 	}
 	
 	public void StartSpawning(){
-		Invoke ( "DoCheckSpawn", timing.delay);
+		Invoke ( "DoCheckSpawn", (timing.delay + Random.Range(-timing.delayVariance, timing.delayVariance)).LimitToRange(0,6000));
 	}
 
 	protected float GetNextSpawnWait(){

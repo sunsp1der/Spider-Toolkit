@@ -19,11 +19,13 @@ public class ComponentFieldEditor : PropertyDrawer {
 		EditorGUI.PrefixLabel(position, label);
 
 		// component
+		Component originalComponent = componentField.component;
 		EditorGUI.indentLevel += 1;
 		position.y += 16;
 		int buttonWidth = 50;
 		Rect tempPosition = position;
 		tempPosition.width -= buttonWidth + 3;
+
 		EditorGUI.PropertyField( tempPosition, property.FindPropertyRelative("component"));
 
 		// button
@@ -41,6 +43,9 @@ public class ComponentFieldEditor : PropertyDrawer {
 		GUI.enabled = true;
 
 		//member
+		if (componentField.component != originalComponent) {
+			componentField.member = "";
+		}
 		position.y += 16;
 		if ( componentField.component == null) {
 			EditorGUI.Popup(position, "Member", 0, new string[]{});
