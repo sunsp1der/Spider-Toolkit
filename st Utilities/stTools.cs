@@ -89,11 +89,12 @@ public static class stTools {
 	/// remove an object using st remove behaviors
 	/// works on non st objects as normal destroy
 	/// </summary>
-	/// <param name="obj">Object.</param>
-	public static void Remove( GameObject obj) {
+	/// <param name="obj">Object to remove.</param>
+	/// <param name="delay">Seconds to delay removal. Negative means immediately. Zero is at end of frame.</param>
+	public static void Remove( GameObject obj, float delay=-1) {
 		stObject stobject = obj.GetComponent<stObject>();
 		if (stobject != null) {
-			stobject.Remove();
+			stobject.Remove( delay);
 		}
 		else {
 			Object.Destroy (obj);

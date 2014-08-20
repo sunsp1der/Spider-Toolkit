@@ -24,10 +24,13 @@ public class TakesDamage : MonoBehaviour {
 	Color startTint;
 	SpriteRenderer spriteRenderer;
 
-	void Start () {
+	void Awake(){
 		health = startHealth;
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		startTint = spriteRenderer.color;
+	}
+
+	void Start () {
 		if (invincibleTime > 0) {
 			invincible = true;
 			Invoke ("MakeVincible", invincibleTime);
@@ -39,7 +42,7 @@ public class TakesDamage : MonoBehaviour {
 	}
 
 	public void TakeDamage( int amount, GameObject damager=null) {
-		if (invincible) return;
+		if (invincible || !enabled) return;
 		health -= amount;
 		if (ontakedamageCallback) {
 			SendMessage("OnTakeDamage", damager);
@@ -48,7 +51,8 @@ public class TakesDamage : MonoBehaviour {
 			spriteRenderer.color = Color.Lerp( tintColor, startTint, (float)health / startHealth);
 		}
 		if (health <= 0 && removeAt0) {
-			stTools.Remove(gameObject);
+			stTools.Remove(gameObject, 0);
 		}
 	}
+
 }

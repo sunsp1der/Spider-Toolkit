@@ -102,7 +102,32 @@ public class Introspector {
 			info.SetValue(source, newValue);
 		}
 	}
-
+	/*
+	/// <summary>
+	/// Gets the smart field list.
+	/// </summary>
+	/// <returns>The smart field list.</returns>
+	/// <param name="component">Component.</param>
+	public static string[] GetSmartFieldList( Component component) {
+		string[] baseMembers = component
+			.GetType()
+				.GetMembers( BindingFlags.Public | BindingFlags.Instance )
+				.Where( m =>
+				       (
+					m.MemberType == MemberTypes.Field ||
+					m.MemberType == MemberTypes.Property
+					) &&
+				       m.DeclaringType != typeof( MonoBehaviour ) &&
+				       m.DeclaringType != typeof( Behaviour ) &&
+				       m.DeclaringType != typeof( Component ) &&
+				       m.DeclaringType != typeof( UnityEngine.Object )
+				       )
+				.Select(m => m.Name)
+				.ToArray();
+		Debug.Log (baseMembers.ToString());
+		return baseMembers;
+	}
+*/
 	/// <summary>
 	/// Gets a list of fields and properties of a given component.
 	/// </summary>
@@ -110,8 +135,7 @@ public class Introspector {
 	/// <param name="component">The component</param>
 	public static MemberInfo[] GetFieldList( Component component )
 	{
-
-		var baseMembers = component
+		MemberInfo[] baseMembers = component
 			.GetType()
 				.GetMembers( BindingFlags.Public | BindingFlags.Instance )
 				.Where( m =>
@@ -126,9 +150,7 @@ public class Introspector {
 				       )
 				.OrderBy( m => m.Name )
 				.ToArray();
-		
 		return baseMembers;
-		
 	}
 }
 /*

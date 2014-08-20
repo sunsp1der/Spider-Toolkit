@@ -76,9 +76,15 @@ public class Spawner : MonoBehaviour {
 	[HideInInspector]
 	public List<GameObject> justSpawned; // object(s) created at last spawn
 
-	public MethodButton _Spawn;// = new MethodButton("Do Spawn");
+	public MethodButton _Spawn; 
 
 	static int ord = 0;
+
+	protected void Awake() {
+		spawnedObjects = new List<GameObject>();
+		justSpawned = new List<GameObject>();
+		ord = GetComponent<SpriteRenderer>().sortingOrder - 1;
+	}
 
 	public List<GameObject> Spawn(){
 		// track newly spawned objects
@@ -188,11 +194,6 @@ public class Spawner : MonoBehaviour {
 	protected void DoCheckSpawn(){
 		// Invoke methods can't have arguments so this is just a simple call to CheckSpawn
 		CheckSpawn();
-	}
-
-	protected void Awake() {
-		spawnedObjects = new List<GameObject>();
-		justSpawned = new List<GameObject>();
 	}
 	
 	public void StartSpawning(){

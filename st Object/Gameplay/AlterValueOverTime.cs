@@ -15,8 +15,8 @@ public class AlterValueOverTime : MonoBehaviour {
 	public ComponentField field;
 	[Tooltip("Amount to increase value per second.")]
 	public float increasePerSecond = 0;
-	[Tooltip("Time between each increment. Zero is every frame, which can be SLOW!")]
-	public float secondsBetweenIncrements = 0.1f;
+	[Tooltip("Time between each increment. Zero is every frame, which can be slow on non-archetype objects.")]
+	public float secondsBetweenIncrements = 0;
 	[Tooltip("If true, automatically disable this on clones of this object. If false, value will change on clones, not on original archetype.")]
 	public bool disableOnClones = true;
 	[Tooltip("Use maximum and minimum values below")]
@@ -27,10 +27,15 @@ public class AlterValueOverTime : MonoBehaviour {
 	stDictionary dict;
 	float lastTime;
 	bool keepChanging = false; // setting this to false will stop the changing until StartValueChange is called again.
-	
+
 	void Start () {
 		dict = stData.GetDictionary(dictionary);
 		if (GetComponent<stObject>().myArchetype != null && disableOnClones) {
+			// For clones we just fake the value alteration by calculating what it would be.
+			if (secondsBetweenIncrements <= 0) {
+				float startTime = GetComponent<stObject>().myArchetype.GetComponent<AlterValueOverTime>().lastTime;
+				ChangeValue( (Time.time - startTime) * increasePerSecond);
+			}
 			enabled = false;
 		}
 		else {
@@ -39,10 +44,8 @@ public class AlterValueOverTime : MonoBehaviour {
 	}
 
 	void ArchetypeStart() {
-		dict = stData.GetDictionary(dictionary);
-		if (disableOnClones) {
-			StartValueChange();
-		}
+		// set value for calculations
+		lastTime = Time.time;
 	}
 
 	/// <summary>
@@ -55,7 +58,7 @@ public class AlterValueOverTime : MonoBehaviour {
 		}
 		lastTime = Time.time;
 		keepChanging = true;
-		StartCoroutine( ValueChange ());
+		StartCoroutine( ValueCoroutine ());
 	}
 
 	/// <summary>
@@ -65,39 +68,44 @@ public class AlterValueOverTime : MonoBehaviour {
 		keepChanging = false;
 	}
 
-	IEnumerator ValueChange(){
+	void ChangeValue( float change) {
+		// This gets a bit complicated because we want to deal with both ints and floats
+
+		float newDictVal = 0;
+		float newFieldVal = 0;
+		
+		// Do the actual alteration
+		if (dict) newDictVal = dict.GetFloat(key) + change;
+		if (field.member != "") newFieldVal = field.GetFloat() + change;
+		if (useMaxAndMin) {
+			newDictVal = newDictVal.LimitToRange( minimum, maximum);
+			newFieldVal = newFieldVal.LimitToRange( minimum, maximum);
+		}
+		
+		// Set the values, making sure we use correct type
+		if (dict) {
+			if ( dict.Get(key) is int) {
+				dict.Set (key, (int)newDictVal);
+			}
+			else {
+				dict.Set (key, newDictVal);
+			}
+		}
+		if (field.member != "") {
+			if ( field.GetObject() is int) {
+				field.SetValue((int)newFieldVal);
+			}
+			else {
+				field.SetValue (newFieldVal);
+			}
+		}
+	}
+
+	IEnumerator ValueCoroutine(){
 		while (keepChanging) {
 			if (enabled) {
-				// This gets a bit complicated because we want to deal with both ints and floats
-				float newDictVal = 0;
-				float newFieldVal = 0;
-
-				// Do the actual alteration
 				float change = (Time.time - lastTime) * increasePerSecond;
-				if (dict) newDictVal = dict.GetFloat(key) + change;
-				if (field.member != "") newFieldVal = field.GetFloat() + change;
-				if (useMaxAndMin) {
-					newDictVal = newDictVal.LimitToRange( minimum, maximum);
-					newFieldVal = newFieldVal.LimitToRange( minimum, maximum);
-				}
-
-				// Set the values, making sure we use correct type
-				if (dict) {
-					if ( dict.Get(key) is int) {
-						dict.Set (key, (int)newDictVal);
-					}
-					else {
-						dict.Set (key, newDictVal);
-					}
-				}
-				if (field.member != "") {
-					if ( field.GetObject() is int) {
-						field.SetValue((int)newFieldVal);
-					}
-					else {
-						field.SetValue (newFieldVal);
-					}
-				}
+				ChangeValue( change);
 			}
 			lastTime = Time.time;
 			yield return new WaitForSeconds(secondsBetweenIncrements);

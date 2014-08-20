@@ -37,20 +37,34 @@ public class stObject : MonoBehaviour {
 		gameObject.SetActive(false);
 	}
 
-	public void Remove( float seconds=0 ) {
-		// delay: seconds until removal
+	/// <summary>
+	/// Remove this object.
+	/// </summary>
+	/// <param name="delay">Seconds to delay removal. Negative means immediately. Zero is at end of frame.</param>
+	public void Remove( float delay ) {
 		if (removing) return;
-		if ( seconds > 0) {
-			Invoke ("Remove", seconds);
-			return;
-		}
+		Invoke ("Remove", delay);
+	}
+
+	/// <summary>
+	/// Remove this object.
+	/// </summary>
+	public void Remove(){
+		if (removing) return;
 		removing = true;
 		BroadcastMessage ("OnRemove", SendMessageOptions.DontRequireReceiver);
+		// destroyAtTime allows other objects to delay removal using the DelayRemoval method below.
 		if (destroyAtTime == 0 || destroyAtTime <= Time.time) {
 			Destroy ( gameObject);
 		}
 	}
 
+
+	/// <summary>
+	/// Delays the removal of this object.
+	/// This is usually called in the OnRemove callback. Useful for fadeout type effects.
+	/// </summary>
+	/// <param name="delay">Delay.</param>
 	public void DelayRemoval( float delay) {
 		// delay: seconds to wait to destroy
 		if (delay <= 0) return;

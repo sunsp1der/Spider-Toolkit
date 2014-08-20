@@ -12,10 +12,15 @@ public class DealsDamage : MonoBehaviour {
 	public bool ondealdamageCallback = false;
 
 	void OnCollisionEnter2D (Collision2D info) {
+		if (!enabled) return;
 		DealDamage (info.gameObject);
 		if (removeOnCollide) {
-			stTools.Remove(gameObject);
+			stTools.Remove(gameObject,0);
 		}
+	}
+
+	// just here to create enabled checkbox
+	void Start () {
 	}
 
 	bool DealDamage (GameObject target, int damage_amount = 0) {
@@ -32,7 +37,7 @@ public class DealsDamage : MonoBehaviour {
 		}
 		takesDamage.TakeDamage( damage_amount, gameObject);
 		if (removeOnDamage) {
-			stTools.Remove(gameObject);
+			stTools.Remove(gameObject,0);
 		}
 		return true;
 	}
