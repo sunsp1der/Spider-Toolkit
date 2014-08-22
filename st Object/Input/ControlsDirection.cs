@@ -15,7 +15,7 @@ public class ControlsDirection : MonoBehaviour {
 	[Tooltip("Mirror character when moving left. Good for side views.")]
 	public bool flipLeft = false; 
 	[Tooltip("Input increases/decreases gradually")]
-	public bool softenInput = false; 
+	public bool softenInput = false;
 	[Tooltip("See project settings/input")]
 	public string horizontalInput = "Horizontal"; 
 	[Tooltip("See project settings/input")]
@@ -36,7 +36,7 @@ public class ControlsDirection : MonoBehaviour {
 			y = stTools.GetAxisBool(verticalInput);
 		}
 
-		Vector2 v =  new Vector2( x * moveVelocity.x, y * moveVelocity.y);
+		Vector2 v =  new Vector2(x * moveVelocity.x, y * moveVelocity.y);
 		rigidbody2D.velocity = v;
 
 		rigidbody2D.angularVelocity = 0;

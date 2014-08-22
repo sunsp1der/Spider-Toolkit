@@ -1,10 +1,10 @@
-﻿// always face current direction of movement
-
+﻿
 using UnityEngine;
 using System.Collections;
 
+// always face current direction of movement
 public class FaceMotion : MonoBehaviour {
-
+	
 	[Tooltip("Only change rotation if velocity is higher than this")]
 	public float minVelocity = 0;
 
