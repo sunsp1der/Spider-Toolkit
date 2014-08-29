@@ -234,6 +234,8 @@ GameObject:
   - 114: {fileID: 122701871}
   - 114: {fileID: 122701870}
   - 114: {fileID: 122701878}
+  - 114: {fileID: 122701879}
+  - 114: {fileID: 122701872}
   m_Layer: 0
   m_Name: thirty health
   m_TagString: Untagged
@@ -277,6 +279,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   accelerate: 0
+--- !u!114 &122701872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 122701869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 459aa2d7558e92e49aba7608a873c2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dictionary: 
+  key: 
+  field:
+    component: {fileID: 122701879}
+    member: width
+  increasePerSecond: 1
+  secondsBetweenIncrements: 0
+  disableOnClones: 1
+  useMaxAndMin: 0
+  minimum: 0
+  maximum: 0
 --- !u!58 &122701873
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -365,6 +389,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doRemoveEffects: 0
   checkVisibility: 1
+--- !u!114 &122701879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 122701869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a8b24a514fd9f49828cb55eb6f056c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 0
 --- !u!1 &969083994
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +414,9 @@ GameObject:
   - 50: {fileID: 969083996}
   - 58: {fileID: 969083995}
   - 114: {fileID: 969084000}
+  - 114: {fileID: 969084002}
+  - 114: {fileID: 969084001}
+  - 114: {fileID: 969084003}
   m_Layer: 0
   m_Name: health spawner
   m_TagString: Untagged
@@ -394,7 +433,7 @@ CircleCollider2D:
   m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .465000004
+  m_Radius: .400000006
   m_Center: {x: 0, y: 0}
 --- !u!50 &969083996
 Rigidbody2D:
@@ -510,6 +549,52 @@ MonoBehaviour:
   _Spawn:
     tooltip: 
   autoStart: 1
+--- !u!114 &969084001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 969083994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 459aa2d7558e92e49aba7608a873c2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dictionary: 
+  key: 
+  field:
+    component: {fileID: 969084003}
+    member: interval
+  increasePerSecond: -.100000001
+  secondsBetweenIncrements: 0
+  disableOnClones: 1
+  useMaxAndMin: 0
+  minimum: .100000001
+  maximum: 5
+--- !u!114 &969084002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 969083994}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7f73e208193db47aab482a7b67be72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 3
+--- !u!114 &969084003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 969083994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a318bc65cb82b644d85321895ff0f61b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 0
 --- !u!1 &1282102065
 GameObject:
   m_ObjectHideFlags: 0

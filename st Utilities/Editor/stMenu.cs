@@ -8,20 +8,24 @@ public class stMenu : EditorWindow {
 
 	[MenuItem( "Tools/Spider-Toolkit/Create Object", false, 0 )]	
 	public static void NewObject() {
-		GameObject noob = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Object/st Object.prefab", typeof(GameObject)));
-		noob.name = stTools.MakeUniqueObjectName("Object", true);
+		GameObject newObject = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Object/st Object.prefab", typeof(GameObject)));
+		newObject.name = stTools.MakeUniqueObjectName("Object", true);
+		Selection.activeObject = newObject;
 	}
 
 	[MenuItem( "Tools/Spider-Toolkit/Create Text", false, 0 )]	
 	public static void NewText() {
-		GameObject noob = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Text/st Text.prefab", typeof(GameObject)));
-		noob.name = stTools.MakeUniqueObjectName("Text", true);
+		GameObject newObject = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Text/st Text.prefab", typeof(GameObject)));
+		newObject.name = stTools.MakeUniqueObjectName("Text", true);
+		Selection.activeObject = newObject;
 	}
 
 	[MenuItem( "Tools/Spider-Toolkit/Create Button", false, 0 )]	
 	public static void NewButton() {
-		GameObject noob = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Object/st Button.prefab", typeof(GameObject)));
-		noob.name = stTools.MakeUniqueObjectName("Button", true);
+		GameObject newObject = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Object/st Button.prefab", typeof(GameObject)));
+		newObject.name = stTools.MakeUniqueObjectName("Button", true);
+		Selection.activeObject = newObject;
+		//Selection.activeGameObject = newObject;
 	}
 
 	[MenuItem( "Tools/Spider-Toolkit/New Scene", false, 0 )]	
@@ -30,8 +34,9 @@ public class stMenu : EditorWindow {
 		EditorApplication.NewScene();
 		GameObject stmain = GameObject.Instantiate( Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Main/st Main.prefab", typeof(GameObject)) ) as GameObject;
 		stmain.name = "st Main";
-		stmain.transform.parent = Camera.main.transform	;
+		stmain.transform.parent = Camera.main.transform;
 		Camera.main.backgroundColor = Color.black;
+		Camera.main.orthographic = true;
 	}
 
 	[MenuItem( "Tools/Spider-Toolkit/Set Up ST Default Collision Layers", false, 0 )]	
