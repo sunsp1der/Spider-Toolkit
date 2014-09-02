@@ -62,12 +62,17 @@ public class Spawner : MonoBehaviour {
 		public bool multiplyScale = false; 
 		[Tooltip("Move object below other objects after spawning")]
 		public bool sortToBottom = true; 
-		[Tooltip("SendMessage OnSpawn(obj) to this object")]
-		public bool onspawnCallback = false;  
-		[Tooltip("SendMessage OnSpawned() to spawned objects")]
-		public bool onspawnedCallback = false;  
 	}
 	public Placement placement;
+
+	[System.Serializable]
+	public class Callbacks {
+		[Tooltip("SendMessage OnSpawn(obj) to this object when it spawns")]
+		public bool onspawnCallback = false;  
+		[Tooltip("SendMessage OnSpawned() to spawned objects when they're spawned")]
+		public bool onspawnedCallback = false;  
+	}
+	public Callbacks callbacks;
 
 	[HideInInspector]
 	public int spawnCount = 0; // total objects spawned by this spawner
@@ -159,11 +164,11 @@ public class Spawner : MonoBehaviour {
 			}
 
 			// callbacks
-			if (placement.onspawnedCallback)
+			if (callbacks.onspawnedCallback)
 			{
 				obj.SendMessage( "OnSpawned", SendMessageOptions.DontRequireReceiver);
 			}
-			if (placement.onspawnCallback)
+			if (callbacks.onspawnCallback)
 			{
 				gameObject.SendMessage( "OnSpawn", obj, SendMessageOptions.DontRequireReceiver);
 			}

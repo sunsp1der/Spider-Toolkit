@@ -52,9 +52,7 @@ public class ComponentFieldEditor : PropertyDrawer {
 		}
 		else {
 			var availableMembers = Introspector
-								.GetFieldList( componentField.component )
-								.Select( member => member.Name )
-								.ToArray();
+								.GetSmartMemberList( componentField.component );
 			int memberIndex = availableMembers.ToList().FindIndex(member => member == componentField.member);
 			int selected = EditorGUI.Popup(position, "Member", memberIndex, availableMembers );
 			if (selected >= 0) {

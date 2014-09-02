@@ -20,6 +20,7 @@ public class Cam2DFollow : MonoBehaviour {
 
 	Vector3 offsetZ; // camera's z distance from object
 	Vector3 lastPosition;
+	[HideInInspector]
 	public Vector3 currentVelocity;
 	Vector3 lookAheadOffset; // target 
 	
