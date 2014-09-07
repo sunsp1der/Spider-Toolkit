@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("st Main/Data/Dictionary Start Value")]
+[AddComponentMenu("st Main/Dictionary Start Value")]
 
 // NOTE: this component has a specialized editor
 

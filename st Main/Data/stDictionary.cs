@@ -8,7 +8,7 @@ using System.IO;
 using UnityEditor;
 #endif
 
-[AddComponentMenu("st Main/Data/st Dictionary")]
+[AddComponentMenu("st Main/st Dictionary")]
 [RequireComponent(typeof(stMain))] 
 
 /// <summary>
@@ -36,7 +36,7 @@ public class stDictionary : MonoBehaviour {
 	}
 	
 	public object Get (string key) {
-		object data;
+		object data = null;
 		dict.TryGetValue (key, out data);
 		return data;
 	}
