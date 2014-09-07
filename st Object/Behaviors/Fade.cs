@@ -56,5 +56,6 @@ public class Fade : MonoBehaviour {
 			                           Mathf.Lerp(alpha,targetAlpha,t));
 			yield return null;
 		}
+		spriteRenderer.color = new Color( spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, targetAlpha);
 	}
 }

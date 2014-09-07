@@ -1,0 +1,21 @@
+st examples
+	lesson 3
+		move no smoothing
+		to points on a circle
+		fading trail
+	spider toolkit features
+		every component
+		
+new features
+	move functions inherent in stobjects
+	arrange window
+		
+improvements
+	make dictionaries serializable 
+		eliminate start value component by allowing values to be set in editor
+	special lists for smartfieldlists
+		add smartfieldtype
+		no hideininspector variables
+	make componentfield faster
+		store accessor?
+		

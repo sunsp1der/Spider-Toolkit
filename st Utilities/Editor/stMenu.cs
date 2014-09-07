@@ -6,26 +6,25 @@ using System.Collections.Generic;
 
 public class stMenu : EditorWindow {			
 
+	static void CreateObject( string pathToAsset, string baseName) {
+		GameObject newObject = (GameObject)Instantiate(Resources.LoadAssetAtPath( pathToAsset, typeof(GameObject)));
+		newObject.name = stTools.MakeUniqueObjectName(baseName, true);
+		Selection.activeObject = newObject;
+	}
+
 	[MenuItem( "Tools/Spider-Toolkit/Create Object", false, 0 )]	
 	public static void NewObject() {
-		GameObject newObject = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Object/st Object.prefab", typeof(GameObject)));
-		newObject.name = stTools.MakeUniqueObjectName("Object", true);
-		Selection.activeObject = newObject;
+		CreateObject ("Assets/Spider-Toolkit/st Object/st Object.prefab", "Object");
 	}
 
 	[MenuItem( "Tools/Spider-Toolkit/Create Text", false, 0 )]	
 	public static void NewText() {
-		GameObject newObject = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Text/st Text.prefab", typeof(GameObject)));
-		newObject.name = stTools.MakeUniqueObjectName("Text", true);
-		Selection.activeObject = newObject;
+		CreateObject ("Assets/Spider-Toolkit/st Text/st Text.prefab", "Text");
 	}
 
 	[MenuItem( "Tools/Spider-Toolkit/Create Button", false, 0 )]	
 	public static void NewButton() {
-		GameObject newObject = (GameObject)Instantiate(Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Object/st Button.prefab", typeof(GameObject)));
-		newObject.name = stTools.MakeUniqueObjectName("Button", true);
-		Selection.activeObject = newObject;
-		//Selection.activeGameObject = newObject;
+		CreateObject ("Assets/Spider-Toolkit/st Object/st Button.prefab", "Button");
 	}
 
 	[MenuItem( "Tools/Spider-Toolkit/New Scene", false, 0 )]	

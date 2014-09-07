@@ -48,5 +48,6 @@ public class GrowShrink : MonoBehaviour {
 			transform.localScale = Vector3.Lerp(scale, targetScale, t);
 			yield return null;
 		}
+		transform.localScale = targetScale;
 	}
 }
