@@ -55,8 +55,19 @@ public class stData : MonoBehaviour {
 	}
 
 	static public stDictionary GetDictionary( string dataName) {
-		stDictionary retValue = null;
-		dictionaries.TryGetValue(dataName, out retValue);
+		stDictionary retValue;
+		try {
+			retValue = dictionaries[dataName];
+		}
+		catch (KeyNotFoundException) {
+			if (dictionaries.Count == 0) {
+				SetupDictionaries();
+				retValue = dictionaries[dataName];
+			}
+			else {
+				throw;
+			}
+		}
 		return retValue;
 	}
 
@@ -64,6 +75,7 @@ public class stData : MonoBehaviour {
 		stDictionary[] dictList = stTools.stMain.GetComponents<stDictionary>();
 		foreach (stDictionary dict in dictList) {
 			dictionaries[dict.dataName] = dict;
+			dict.SetStartValues();
 		}
 		
 	}

@@ -6,7 +6,8 @@ using System.Collections;
 // NOTE: this component has a specialized editor
 
 /// <summary>
-/// Set a starting value for an stDictionary when scene loads.
+/// Set a starting value for an stDictionary when scene loads. Usually it is better to use the start values in the 
+/// dictionary itself, but this can be used for resetting values when a level is reloaded, etc.
 /// </summary>
 public class DictionaryStartValue : MonoBehaviour {
 

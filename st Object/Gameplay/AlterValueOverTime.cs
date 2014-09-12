@@ -29,7 +29,9 @@ public class AlterValueOverTime : MonoBehaviour {
 	bool keepChanging = false; // setting this to false will stop the changing until StartValueChange is called again.
 
 	void Start () {
-		dict = stData.GetDictionary(dictionary);
+		if (dictionary != "") {
+			dict = stData.GetDictionary(dictionary);
+		}
 		if (GetComponent<stObject>().myArchetype != null && disableOnClones) {
 			// For clones we just fake the value alteration by calculating what it would be.
 			if (secondsBetweenIncrements <= 0) {

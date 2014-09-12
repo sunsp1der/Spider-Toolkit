@@ -11,11 +11,15 @@ new features
 	arrange window
 		
 improvements
-	make dictionaries serializable 
-		eliminate start value component by allowing values to be set in editor
+*	setvaluetodict
+*	finish off dictionaries
+		add vector types to st dictionary
+		check awake implications and error possibilities for uninitialized dictionaries
+	make st main create its audio interfaces at runtime
 	special lists for smartfieldlists
 		add smartfieldtype
 		no hideininspector variables
 	make componentfield faster
+	add dictionaryfield
 		store accessor?
-		
+	search for stMain name not tag. eliminate tag

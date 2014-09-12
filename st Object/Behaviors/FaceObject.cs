@@ -18,7 +18,7 @@ public class FaceObject : MonoBehaviour {
 		target = GameObject.Find (targetName);
 	}
 
-	void Awake () {
+	void Start () {
 		FindTarget ();
 	}
 

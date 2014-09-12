@@ -2,10 +2,10 @@
 using System.Collections;
 using System;
 
-[AddComponentMenu("st Main/Set Value To Dict")]
+[AddComponentMenu("st Main/Set Awake Value To Dict")]
 
 // on awake (before start) the chosen value is set to an stDictionary value
-// currently only works when the second level is loaded
+
 
 public class SetAwakeValueToDict : MonoBehaviour {
 
@@ -16,14 +16,14 @@ public class SetAwakeValueToDict : MonoBehaviour {
 	[Tooltip("The component field to set. Be sure data types match!")]
 	public ComponentField field;
 
+	stDictionary dict;
+
 	void Awake () {
+		dict = stData.GetDictionary (dictionary);
 		SetField ();
 	}
 	
-	void SetField () {
-		stDictionary dict = stData.GetDictionary (dictionary);
-		if (dict) {
-			field.SetValue( dict.Get ( key));
-		} 
+	public void SetField () {
+		field.SetValue( dict.Get ( key));
 	}
 } 
