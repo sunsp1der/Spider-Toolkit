@@ -74,20 +74,19 @@ public class Spawner : MonoBehaviour {
 	}
 	public Callbacks callbacks;
 
+	[Tooltip("Perform a spawn call. This works in editor.")]
+	public MethodButton _Spawn; 
+
 	[HideInInspector]
 	public int spawnCount = 0; // total objects spawned by this spawner
 	[HideInInspector]
-	public List<GameObject> spawnedObjects; // list of spawned objects currently in scene
+	public List<GameObject> spawnedObjects = new List<GameObject>(); // list of spawned objects currently in scene
 	[HideInInspector]
-	public List<GameObject> justSpawned; // object(s) created at last spawn
-
-	public MethodButton _Spawn; 
+	public List<GameObject> justSpawned = new List<GameObject>(); // object(s) created at last spawn
 
 	static int ord = 0;
 
 	protected void Awake() {
-		spawnedObjects = new List<GameObject>();
-		justSpawned = new List<GameObject>();
 		ord = GetComponent<SpriteRenderer>().sortingOrder - 1;
 	}
 

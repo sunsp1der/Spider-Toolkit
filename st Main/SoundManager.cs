@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(stMain))]
@@ -16,9 +17,15 @@ public class SoundManager : MonoBehaviour {
 	public AudioInfo[] audioInfo;
 	
 	void Awake () {
-		AudioSource[] audioSources = GetComponents<AudioSource>();
-		audioInfo = new AudioInfo[audioSources.Length];
-		for (int i = 0; i<audioSources.Length; i++) {
+		stMain main = stTools.stMain;
+		List<AudioSource> audioSources = GetComponents<AudioSource>().ToList();
+		// add any new audio sources necessary
+		for (int i = audioSources.Count; i < main.audioSources; i++) {
+			audioSources.Add ( main.gameObject.AddComponent<AudioSource>());
+		}
+		// add all AudioSources to audioInfo array
+		audioInfo = new AudioInfo[audioSources.Count];
+		for ( int i = 0; i<audioSources.Count; i++) {
 			audioInfo[i] = new AudioInfo();
 			audioInfo[i].source = audioSources[i];
 			audioSources[i].clip = null;

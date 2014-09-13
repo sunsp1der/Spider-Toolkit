@@ -11,15 +11,10 @@ new features
 	arrange window
 		
 improvements
-*	setvaluetodict
-*	finish off dictionaries
-		add vector types to st dictionary
-		check awake implications and error possibilities for uninitialized dictionaries
-	make st main create its audio interfaces at runtime
+X	make st main create its audio interfaces at runtime
 	special lists for smartfieldlists
 		add smartfieldtype
 		no hideininspector variables
 	make componentfield faster
 	add dictionaryfield
 		store accessor?
-	search for stMain name not tag. eliminate tag

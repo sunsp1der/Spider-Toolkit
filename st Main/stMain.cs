@@ -1,6 +1,7 @@
 // main game object for ST based games
 // the stMain object loaded in the first scene will persist through all levels... 
 // stMain objects in future level files will be ignored
+// stMain objects have to be tagged for persistence to work.
 
 using UnityEngine;
 using System.Collections;
@@ -8,6 +9,7 @@ using System.Collections;
 public class stMain : MonoBehaviour {
 
 	[Tooltip("Automatically add basic utility keys.")]
+	public int audioSources = 4;
 	public bool utilityKeys = true; 
 	/*
 	 * Restart: R
