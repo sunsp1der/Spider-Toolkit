@@ -7,14 +7,13 @@ st examples
 		every component
 		
 new features
-	move functions inherent in stobjects
+	moveto functions inherent in stobjects
 	arrange window
 		
 improvements
-X	make st main create its audio interfaces at runtime
 	special lists for smartfieldlists
 		add smartfieldtype
 		no hideininspector variables
-	make componentfield faster
-	add dictionaryfield
-		store accessor?
+
+FUTURE
+	make componentfield faster - Need to know how to create dynamic functions in c#
