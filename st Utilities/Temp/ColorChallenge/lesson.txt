@@ -9,7 +9,7 @@ next class
 			onmousedown, onmouseupasbutton (mouseclickremove)
 			onspawn (spawn)
 	lesson
-		red green blue spawners change color of missile to their color
+		red green blue spawners change color of missile to their color (spawnedcolormatch, spawnercolormatch)
 	challenge
 		make a group of objects that shift colors when hit
-		hint: hierarchy objects
+		spinning hint: hierarchy objects
