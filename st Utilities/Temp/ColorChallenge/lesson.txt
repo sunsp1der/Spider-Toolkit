@@ -1,0 +1,15 @@
+next class
+	coding
+		colors
+			rgba 
+			make color spider show interface
+			write setColor component
+		callbacks
+			oncollisionenter2d (spawnoncollision)
+			onmousedown, onmouseupasbutton (mouseclickremove)
+			onspawn (spawn)
+	lesson
+		red green blue spawners change color of missile to their color
+	challenge
+		make a group of objects that shift colors when hit
+		hint: hierarchy objects

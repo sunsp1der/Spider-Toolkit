@@ -23,12 +23,14 @@ public class ControlsPlatformer : MonoBehaviour {
 	 
 	bool facingRight = true;
 	Vector3 groundVector; // distance from center to the ground under object
+	Vector3 rightVector; // distance from center to just right object
 
 	void Start () {
 		// calculate groundVector based on sprite's size
 		Vector3 min = gameObject.GetComponent<SpriteRenderer>().bounds.min;
 		Vector3 max = gameObject.GetComponent<SpriteRenderer>().bounds.max;
 		groundVector = new Vector3 (0, (max.y - min.y) * 0.5f + 0.03f);
+		rightVector = new Vector3(0, (max.x - min.x) * 0.5f + 0.03f);
 	}
 
 	// Update is called once per frame
@@ -37,7 +39,6 @@ public class ControlsPlatformer : MonoBehaviour {
 		bool jump = Input.GetButtonDown(jumpInput);
 		if (jump) {
 			Vector2 groundPos = (Vector2) (transform.position - groundVector);
-
 			// Use Linecast to see if there is ground under the player
 			if (Physics2D.Linecast(transform.position, groundPos, 1 << LayerMask.NameToLayer(groundLayer))) {
 				rigidbody2D.AddForce(  new Vector2(0, jumpForce)); 
@@ -51,6 +52,15 @@ public class ControlsPlatformer : MonoBehaviour {
 		}
 		else {
 			x = stTools.GetAxisBool(horizontalInput);
+		}
+		if (x > 0 && Physics2D.Linecast(transform.position, transform.position - rightVector, 
+		                                1 << LayerMask.NameToLayer(groundLayer))) {
+			x = 0;
+			print ("!");
+		}
+		if (x < 0 && Physics2D.Linecast(transform.position, transform.position + rightVector, 
+		                                1 << LayerMask.NameToLayer(groundLayer))) {
+			x = 0;
 		}
 		Vector2 v = new Vector2(x * speed, rigidbody2D.velocity.y);
 		rigidbody2D.velocity = v;

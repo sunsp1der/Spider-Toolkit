@@ -1,0 +1,32 @@
+$ change name "enemy" to "target"
+$ set motion defaults to 0
+	do set motion button
+$ track down that defaulteditorwindow error in colorchallenge
+
+fix platformer to not stick to walls
+
+st examples
+	lesson 3
+		move no smoothing
+		to points on a circle
+		fading trail
+	spider toolkit features
+		every component
+		
+new features
+	$ make new menu objects created with offset
+	moveto functions inherent in stobjects
+	arrange window
+		
+improvements
+	$ changevalueovertime (tweenValue)
+		add loop option
+		add smoothing option
+	don't allow archetype to apply when applying to prefabs, if possible. or warning maybe?
+	prefab connections to archetypes don't stick on apply
+	special lists for smartfieldlists
+		add smartfieldtype
+		no hideininspector variables
+
+FUTURE
+	make componentfield faster - Need to know how to create dynamic functions in c#

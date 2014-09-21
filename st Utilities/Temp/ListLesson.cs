@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class test : MonoBehaviour {
+public class ListLesson : MonoBehaviour {
 
 	public GameObject spawnObject;
 	public MethodButton _CreateObjects;

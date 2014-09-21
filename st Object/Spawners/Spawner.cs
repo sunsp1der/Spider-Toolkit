@@ -67,14 +67,14 @@ public class Spawner : MonoBehaviour {
 
 	[System.Serializable]
 	public class Callbacks {
-		[Tooltip("SendMessage OnSpawn(obj) to this object when it spawns")]
+		[Tooltip("SendMessage OnSpawn(GameObject spawnedObject) to this gameObject when it spawns")]
 		public bool onspawnCallback = false;  
-		[Tooltip("SendMessage OnSpawned() to spawned objects when they're spawned")]
+		[Tooltip("SendMessage OnSpawned(Spawner thisSpawnComponent) to spawned objects when they're spawned")]
 		public bool onspawnedCallback = false;  
 	}
 	public Callbacks callbacks;
 
-	[Tooltip("Perform a spawn call. This works in editor.")]
+	[Tooltip("Perform a spawn call. This works in editor mode.")]
 	public MethodButton _Spawn; 
 
 	[HideInInspector]
@@ -165,7 +165,7 @@ public class Spawner : MonoBehaviour {
 			// callbacks
 			if (callbacks.onspawnedCallback)
 			{
-				obj.SendMessage( "OnSpawned", SendMessageOptions.DontRequireReceiver);
+				obj.SendMessage( "OnSpawned", this, SendMessageOptions.DontRequireReceiver);
 			}
 			if (callbacks.onspawnCallback)
 			{
