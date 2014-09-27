@@ -1,0 +1,40 @@
+random
+
+	show scene
+		mouseclickspawner
+		growshrink and selfdestruct
+			remove vs destroy concept
+
+	random intro
+		find component with randomizer function
+		take best guess as to how it works
+	
+	color change (RandColor)
+		random color (use color32) 
+		byte typecasting
+		figure out how to make r+g+b always = 255
+
+	Challenge component random position in start (randloc spider)
+		random range
+		screen coordinates
+
+	lerp		(RandMove)
+		move to random position
+			use lerp
+
+	challenge	(RandColor)
+		lerp to another color 
+						
+	list of gameobjects (RandSpawner)
+		random range int
+		pick random game object to spawn
+			using methodbutton
+			
+	challenge
+		spawn a random number of pieces of junk when spider is destroyed.
+			make the junk fly away at random angle but set speed
+			make fireball explosion spawn with it
+		make a randomizer spawner based on Spawner that works like above example (MouseRandSpawner)
+		
+
+	
