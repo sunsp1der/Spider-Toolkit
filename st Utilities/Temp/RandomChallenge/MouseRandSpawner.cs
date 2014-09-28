@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class MouseRandSpawner : MouseClickSpawner {
+public class MouseRandSpawner : MouseClickSpawner { 
 
 	public List<GameObject> objects;
 

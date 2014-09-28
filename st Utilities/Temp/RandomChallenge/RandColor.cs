@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RandColor : MonoBehaviour {
+public class RandColor : MonoBehaviour { 
 
 	public bool total255;
 	public bool lerpToNew;

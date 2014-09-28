@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RandMove : MonoBehaviour {
 
-	public float moveTime = 1;
+	public float moveTime = 1; 
 	Vector3 startPosition, targetPosition;
 	float startTime;
 
