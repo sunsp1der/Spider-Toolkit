@@ -1,7 +1,4 @@
-$ change name "enemy" to "target"
-$ set motion defaults to 0
-	do set motion button
-$ track down that defaulteditorwindow error in colorchallenge
+
 
 fix platformer to not stick to walls
 
@@ -19,9 +16,6 @@ new features
 	arrange window
 		
 improvements
-	$ changevalueovertime (tweenValue)
-		add loop option
-		add smoothing option
 	don't allow archetype to apply when applying to prefabs, if possible. or warning maybe?
 	prefab connections to archetypes don't stick on apply
 	special lists for smartfieldlists

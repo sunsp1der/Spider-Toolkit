@@ -19,10 +19,12 @@ public class AlterValueOverTime : MonoBehaviour {
 	public float secondsBetweenIncrements = 0;
 	[Tooltip("If true, automatically disable this on clones of this object. If false, value will change on clones, not on original archetype.")]
 	public bool disableOnClones = true;
-	[Tooltip("Use maximum and minimum values below")]
-	public bool useMaxAndMin = false;
-	public float minimum = 0;
+	[Tooltip("Stop at maximum and minimum values below.")]
+	public bool limitToMaxAndMin = false;
+	[Tooltip("Loop value between maximum and minimum values below.")]
+	public bool loopMaxAndMin = false;
 	public float maximum = 0;
+	public float minimum = 0;
 
 	stDictionary dict;
 	float lastTime;
@@ -79,7 +81,14 @@ public class AlterValueOverTime : MonoBehaviour {
 		// Do the actual alteration
 		if (dict) newDictVal = dict.GetFloat(key) + change;
 		if (field.member != "") newFieldVal = field.GetFloat() + change;
-		if (useMaxAndMin) {
+		if (loopMaxAndMin) {
+			if (((newDictVal > maximum && increasePerSecond > 0) || (newDictVal < minimum && increasePerSecond < 0)) ||
+			    ((newFieldVal > maximum && increasePerSecond > 0) || (newFieldVal < minimum && increasePerSecond < 0))){
+				increasePerSecond = -increasePerSecond;
+			}
+			print (newFieldVal+" "+change);
+		}
+		else if (limitToMaxAndMin) {
 			newDictVal = newDictVal.LimitToRange( minimum, maximum);
 			newFieldVal = newFieldVal.LimitToRange( minimum, maximum);
 		}

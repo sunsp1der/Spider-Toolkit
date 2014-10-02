@@ -26,6 +26,32 @@ public class RandColor : MonoBehaviour {
 	}
 
 	// Use this for initialization
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	void Start () {
 		startColor = randomColor ();
 		GetComponent<SpriteRenderer>().color = startColor;

@@ -7,16 +7,16 @@ public class SetMotion : MonoBehaviour {
 	// Set object's velocity and/or angular velocity when spawned
 
 	[Tooltip("Speed of linear velocity")]
-	public float speed = 1; 
+	public float speed = 0; 
 	[Tooltip("Angle of linear velocity")]
 	public float angle = 0; 
 	public float angularVelocity = 0;
 	[Tooltip("Set motion relative to object rotation")]
-	public bool rotated = true; // If owner is already rotated when motion is set,
-								// velocity and acceleration will be relative to 
-								// that rotation
-	[Tooltip("Add to current values")]
-	public bool additive = true; // Add to owner's values instead of setting them
+	public bool rotated = true; 
+	[Tooltip("Add to current values instead of setting them")]
+	public bool additive = true; 
+	[Tooltip("If in play mode, set motion values")]
+	public MethodButton _DoSetMotion;
 
 	void Start () {
 		DoSetMotion();

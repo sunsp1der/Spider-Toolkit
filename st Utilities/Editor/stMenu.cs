@@ -50,8 +50,8 @@ public class stMenu : EditorWindow {
 			{"User Layer 27","No Collide"},
 			{"User Layer 28","Player"},
 			{"User Layer 29","Player Shot"},
-			{"User Layer 30","Enemy"},
-			{"User Layer 31","Enemy Shot"},
+			{"User Layer 30","Target"},
+			{"User Layer 31","Target Shot"},
 		};
 		bool errors = false;
 		while (it.NextVisible(showChildren))
