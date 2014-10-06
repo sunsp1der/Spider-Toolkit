@@ -24,13 +24,14 @@ public class ControlsPlatformer : MonoBehaviour {
 	bool facingRight = true;
 	Vector3 groundVector; // distance from center to the ground under object
 	Vector3 rightVector; // distance from center to just right object
-
+	public float test;
 	void Start () {
 		// calculate groundVector based on sprite's size
 		Vector3 min = gameObject.GetComponent<SpriteRenderer>().bounds.min;
 		Vector3 max = gameObject.GetComponent<SpriteRenderer>().bounds.max;
 		groundVector = new Vector3 (0, (max.y - min.y) * 0.5f + 0.03f);
-		rightVector = new Vector3(0, (max.x - min.x) * 0.5f + 0.03f);
+		rightVector = new Vector3(0, (max.x - min.x) * 0.5f + test);
+		print (rightVector);
 	}
 
 	// Update is called once per frame
@@ -61,6 +62,7 @@ public class ControlsPlatformer : MonoBehaviour {
 		if (x < 0 && Physics2D.Linecast(transform.position, transform.position + rightVector, 
 		                                1 << LayerMask.NameToLayer(groundLayer))) {
 			x = 0;
+			print("!2");
 		}
 		Vector2 v = new Vector2(x * speed, rigidbody2D.velocity.y);
 		rigidbody2D.velocity = v;

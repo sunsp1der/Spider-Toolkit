@@ -6,41 +6,60 @@ using System.Collections.Generic;
 
 public class stMenu : EditorWindow {			
 
-	static void CreateObject( string pathToAsset, string baseName) {
+	static GameObject CreateObject( string pathToAsset, string baseName) {
+		// instantiate new object from resources
 		GameObject newObject = (GameObject)Instantiate(Resources.LoadAssetAtPath( pathToAsset, typeof(GameObject)));
+		// give it a unique name
 		newObject.name = stTools.MakeUniqueObjectName(baseName, true);
+		// give it a unique location
+		GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>() ;
+		bool duplicateLocation;
+		do {
+			duplicateLocation = false;
+			foreach(GameObject go in allObjects) {
+				if (go != newObject && go.activeInHierarchy && 
+				    						go.transform.position == newObject.transform.position) {
+					newObject.transform.position += new Vector3 (0.3f, -0.3f, 0);
+					duplicateLocation = true;
+				}
+			}
+		} while (duplicateLocation);
+		// select it
 		Selection.activeObject = newObject;
+		return newObject;
 	}
 
-	[MenuItem( "Tools/Spider-Toolkit/Create Object", false, 0 )]	
+	[MenuItem( "Spider-Toolkit/Create Object", false, 0 )]	
 	public static void NewObject() {
 		CreateObject ("Assets/Spider-Toolkit/st Object/st Object.prefab", "Object");
 	}
 
-	[MenuItem( "Tools/Spider-Toolkit/Create Text", false, 0 )]	
+	[MenuItem( "Spider-Toolkit/Create Text", false, 0 )]	
 	public static void NewText() {
 		CreateObject ("Assets/Spider-Toolkit/st Text/st Text.prefab", "Text");
 	}
 
-	[MenuItem( "Tools/Spider-Toolkit/Create Button", false, 0 )]	
+	[MenuItem( "Spider-Toolkit/Create Button", false, 0 )]	
 	public static void NewButton() {
 		CreateObject ("Assets/Spider-Toolkit/st Object/st Button.prefab", "Button");
 	}
 
-	[MenuItem( "Tools/Spider-Toolkit/New Scene", false, 0 )]	
+	[MenuItem( "Spider-Toolkit/New Scene", false, 0 )]	
 	public static void EndScene() {
 		EditorApplication.SaveCurrentSceneIfUserWantsTo();
 		EditorApplication.NewScene();
-		GameObject stmain = GameObject.Instantiate( Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Main/st Main.prefab", typeof(GameObject)) ) as GameObject;
+		GameObject stmain = (GameObject) GameObject.Instantiate( 
+						Resources.LoadAssetAtPath("Assets/Spider-Toolkit/st Main/st Main.prefab", typeof(GameObject)));
 		stmain.name = "st Main";
 		stmain.transform.parent = Camera.main.transform;
 		Camera.main.backgroundColor = Color.black;
 		Camera.main.orthographic = true;
 	}
 
-	[MenuItem( "Tools/Spider-Toolkit/Set Up ST Default Collision Layers", false, 0 )]	
+	[MenuItem( "Spider-Toolkit/Tools/Set ST Default Collision Layers", false, 0 )]	
 	public static void AddSTLayers() {
-		SerializedObject tagManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
+		SerializedObject tagManager = 
+					new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
 		
 		SerializedProperty it = tagManager.GetIterator();
 		bool showChildren = true;

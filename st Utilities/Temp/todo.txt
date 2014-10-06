@@ -1,7 +1,5 @@
 
 
-fix platformer to not stick to walls
-
 st examples
 	lesson 3
 		move no smoothing
@@ -11,8 +9,7 @@ st examples
 		every component
 		
 new features
-	$ make new menu objects created with offset
-	moveto functions inherent in stobjects
+	finish camera follow
 	arrange window
 		
 improvements
@@ -24,3 +21,5 @@ improvements
 
 FUTURE
 	make componentfield faster - Need to know how to create dynamic functions in c#
+	screen-wrap
+	moveto functions inherent in stobjects

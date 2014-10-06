@@ -7,7 +7,9 @@ public class MouseFollow : MonoBehaviour {
 	// object follows the mouse pointer
 
 	[Range(0,5)]
-	public float facingSpeed = 0; // rotate object to direction of motion this fast
+	[Tooltip("Rotate object to direction of motion this fast")]
+	public float facingSpeed = 0; 
+	[Tooltip("Don't allow object to move offscreen")]
 	public bool keepOnScreen = false;
 
 	Rect screen; // used for boundaries (left, top, right, bottom)
