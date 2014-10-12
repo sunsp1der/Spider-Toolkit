@@ -1,0 +1,23 @@
+text
+
+Title
+Button
+	Restart
+	Toggle Spawn
+		OnClick
+Spawns
+	Component Watcher
+Destroyer
+	Remove 
+		Concept of remove - self destruct, fade
+		RemoveOnCollision doRemoveEffects
+Destroyed
+	Dictionary Watcher
+	Dictionary
+	Alter Value
+Total Destroyed
+	Dictionary Start Value
+
+		
+
+	

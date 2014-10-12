@@ -73,10 +73,12 @@ public class Spawner : MonoBehaviour {
 		public bool onspawnedCallback = false;  
 	}
 	public Callbacks callbacks;
-
+	
 	[Tooltip("Perform a spawn call. This works in editor mode.")]
 	public MethodButton _Spawn; 
 
+	[HideInInspector]
+	public bool isSpawning = false;
 	[HideInInspector]
 	public int spawnCount = 0; // total objects spawned by this spawner
 	[HideInInspector]
@@ -111,6 +113,7 @@ public class Spawner : MonoBehaviour {
 				if (count.deleteWhenDone){
 					Destroy (gameObject);
 				}
+				StopSpawning();
 				break;
 			}
 			// check if there are too many in scene already
@@ -202,6 +205,7 @@ public class Spawner : MonoBehaviour {
 	
 	public void StartSpawning(){
 		Invoke ( "DoCheckSpawn", (timing.delay + Random.Range(-timing.delayVariance, timing.delayVariance)).LimitToRange(0,6000));
+		isSpawning = true;
 	}
 
 	protected float GetNextSpawnWait(){
@@ -212,5 +216,6 @@ public class Spawner : MonoBehaviour {
 	
 	public void StopSpawning () {
 		CancelInvoke("DoCheckSpawn");
+		isSpawning = false;
 	}
 }

@@ -26,6 +26,7 @@ public class stMenu : EditorWindow {
 		} while (duplicateLocation);
 		// select it
 		Selection.activeObject = newObject;
+		Undo.RegisterCreatedObjectUndo( newObject, "Create "+baseName);
 		return newObject;
 	}
 

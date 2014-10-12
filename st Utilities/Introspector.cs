@@ -35,8 +35,8 @@ public class Introspector {
 			if (// skip if it's not a field or a property
 				(m.MemberType != MemberTypes.Field && 
 			     m.MemberType != MemberTypes.Property) ||
-			    // skip if it's hidden in the inspector 
-			    Attribute.IsDefined(m, typeof(HideInInspector)) || 
+			    	// skip if it's hidden in the inspector 
+			    	// Attribute.IsDefined(m, typeof(HideInInspector)) || 
 			    // skip if it's a field/property of our parent classes
 				m.DeclaringType == typeof( MonoBehaviour ) ||
 			    m.DeclaringType == typeof( Behaviour ) ||
