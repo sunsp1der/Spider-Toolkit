@@ -1,4 +1,4 @@
-﻿// add controls to turn right/left and move forward/back
+// add controls to turn right/left and move forward/back
 
 using UnityEngine;
 using System.Collections;
@@ -33,8 +33,8 @@ public class ControlsRotateDrive : MonoBehaviour {
 			y = Input.GetAxis(verticalInput);
 		}
 		else {
-			r = stTools.GetAxisBool(horizontalInput);
-			y = stTools.GetAxisBool(verticalInput);
+			r = stTools.GetAxisNorm(horizontalInput);
+			y = stTools.GetAxisNorm(verticalInput);
 		}
 
 		gameObject.rigidbody2D.angularVelocity = -r * angularVelocity;

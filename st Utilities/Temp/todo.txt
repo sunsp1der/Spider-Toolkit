@@ -8,6 +8,14 @@ st examples
 	spider toolkit features
 		every component
 		
+spawner upgrade
+	AutoSpawning bool
+	build delay in, even in cases like keyspawner
+		invoke resumespawning and call checkspawn at same time
+	forcespawn method ignoring time and count (for editor button)
+	add ignore options for checkspawn
+	check spawnedobjects for whether it tracks deleted objects...		
+		
 new features
 	finish camera follow
 	arrange window

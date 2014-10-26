@@ -1,4 +1,4 @@
-﻿// keyboard controls for a float value
+// keyboard controls for a float value
 
 using UnityEngine;
 using System.Collections;
@@ -42,7 +42,7 @@ public class ControlFloat : MonoBehaviour {
 
 		if (oncePerClick) {
 			if (Input.GetButtonDown(input)) {
-				change = stTools.GetAxisBool(input) * delta;
+				change = stTools.GetAxisNorm(input) * delta;
 			}
 		}
 		else {
@@ -50,7 +50,7 @@ public class ControlFloat : MonoBehaviour {
 				change = Input.GetAxis(input) * delta;
 			}
 			else {
-				change = stTools.GetAxisBool(input) * delta;
+				change = stTools.GetAxisNorm(input) * delta;
 			}
 		}
 		if (change != 0) {

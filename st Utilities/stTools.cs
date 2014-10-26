@@ -48,7 +48,7 @@ public static class stTools {
 	/// </summary>
 	/// <returns>The hardened axis.</returns>
 	/// <param name="input">Input axis from settings/input.</param>
-	public static float GetAxisBool (string input){
+	public static float GetAxisNorm (string input){
 		if (!Input.GetButton(input)) {
 			return 0;
 		}

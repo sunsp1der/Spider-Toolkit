@@ -1,4 +1,4 @@
-﻿// add up/down/left/right controls
+// add up/down/left/right controls
 
 using UnityEngine;
 using System.Collections;
@@ -32,8 +32,8 @@ public class ControlsDirection : MonoBehaviour {
 			y = Input.GetAxis(verticalInput);
 		}
 		else {
-			x = stTools.GetAxisBool(horizontalInput);
-			y = stTools.GetAxisBool(verticalInput);
+			x = stTools.GetAxisNorm(horizontalInput);
+			y = stTools.GetAxisNorm(verticalInput);
 		}
 
 		Vector2 v =  new Vector2(x * moveVelocity.x, y * moveVelocity.y);

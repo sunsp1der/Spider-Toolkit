@@ -1,4 +1,4 @@
-﻿// add up/down/left/right controls
+// add up/down/left/right controls
 
 using UnityEngine;
 using System.Collections;
@@ -52,7 +52,7 @@ public class ControlsPlatformer : MonoBehaviour {
 			x = Input.GetAxis(horizontalInput);
 		}
 		else {
-			x = stTools.GetAxisBool(horizontalInput);
+			x = stTools.GetAxisNorm(horizontalInput);
 		}
 		if (x > 0 && Physics2D.Linecast(transform.position, transform.position - rightVector, 
 		                                1 << LayerMask.NameToLayer(groundLayer))) {
