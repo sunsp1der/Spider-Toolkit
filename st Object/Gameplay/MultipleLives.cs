@@ -4,11 +4,12 @@ using System.Collections;
 [AddComponentMenu("st Object/Gameplay/Multiple Lives")]
 [RequireComponent(typeof(stObject))]
 
-
+/// <summary>
+/// This object has multiple lives and will respawn at starting point
+/// after being Destroyed. stObject.archetype will be set to true on 
+/// original object.
+/// </summary>
 public class MultipleLives : MonoBehaviour {
-	// This object has multiple lives and will respawn at starting point
-	// after being Destroyed. stObject.archetype will be set to true on 
-	// original object.
 
 	[Tooltip("Number of times to respawn. -1 is infinite.")]
 	public int lives = 3; 

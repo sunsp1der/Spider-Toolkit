@@ -4,6 +4,9 @@ using System.Collections;
 [AddComponentMenu("st Object/Gameplay/Takes Damage")]
 [RequireComponent(typeof(SpriteRenderer))]
 
+/// <summary>
+/// Object tracks damage. Use with DealsDamage component
+/// </summary>
 public class TakesDamage : MonoBehaviour {
 
 	public int startHealth = 100; // amount of damage the object can take

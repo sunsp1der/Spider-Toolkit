@@ -2,11 +2,11 @@
 using System.Collections;
 using System;
 
-[AddComponentMenu("st Main/Set Awake Value To Dict")]
+[AddComponentMenu("st Object/Gameplay/Set Awake Value To Dict")]
 
-// on awake (before start) the chosen value is set to an stDictionary value
-
-
+/// <summary>
+/// on awake (before start) the chosen value is set to an stDictionary value
+/// </summary>
 public class SetAwakeValueToDict : MonoBehaviour {
 
 	[Tooltip("If dictionary and key are set, use this dictionary. Use DictionaryStartValue to initialize.")]

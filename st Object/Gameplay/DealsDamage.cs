@@ -1,9 +1,11 @@
-﻿// deal damage to object collided with if that object has
-// TakesDamage component
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+[AddComponentMenu("st Object/Gameplay/Deals Damage")]
 
+/// <summary>
+/// deal damage to object collided with if that object has
+/// TakesDamage component
+/// </summary>
 public class DealsDamage : MonoBehaviour {
 
 	public int amount = 100;

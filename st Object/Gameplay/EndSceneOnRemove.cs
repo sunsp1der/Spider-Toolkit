@@ -1,8 +1,11 @@
-﻿// When this AND ALL OTHER OBJECTS WITH THIS COMPONENT are removed from the scene, start a new scene
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("st Object/Gameplay/Alter Value")]
+
+/// <summary>
+/// When this AND ALL OTHER OBJECTS WITH THIS COMPONENT are removed from the scene, start a new scene
+/// </summary>
 public class EndSceneOnRemove : MonoBehaviour {
 
 	[Tooltip("The next level to load")]

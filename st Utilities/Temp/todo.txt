@@ -1,4 +1,8 @@
-
+beat experiment
+	selectable
+		deselect when click away from selectables
+		color pulse
+	default sorting layers
 
 st examples
 	lesson 3
