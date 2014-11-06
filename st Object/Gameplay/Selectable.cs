@@ -20,15 +20,15 @@ public class Selectable : MonoBehaviour {
 	[Tooltip("Send Select() and Unselect() callbacks. Leave this on to use ST OnSelect components")]
 	public bool doCallbacks = true;
 
-	public MethodButton _Select;
-	public MethodButton _Unselect;
-
+	public MethodButton _Select; // editor button
+	public MethodButton _Unselect; // editor button
 	[HideInInspector]
-	public bool selected = false;
-	public LockedView _selected;
+	public bool selected = false; // object is selected
+	public LockedView _selected; // locked editor view of selected
+	GameObject myMarker; // marker to show object is selected. Will be a child of this object's transform.
 
-	static List<GameObject> selectedObjects = new List<GameObject>();
-	GameObject myMarker;
+	static List<GameObject> selectedObjects = new List<GameObject>(); // list of all selected objects
+	static float lastSelectTime; // used to determine if any objects have been selected this frame.
 
 	void Select() {
 		if (selected) {
@@ -67,9 +67,6 @@ public class Selectable : MonoBehaviour {
 		// loop through backwards so removals don't disrupt list
 		for (int i = selectedObjects.Count - 1; i >= 0; i--){
 			GameObject unselected = selectedObjects[i];
-			if (unselected == gameObject) {
-				continue;
-			}
 			Selectable selectable = unselected.GetComponent<Selectable> ();
 			if (selectable.doCallbacks) {
 				unselected.SendMessage ("Unselect", SendMessageOptions.DontRequireReceiver);
@@ -81,16 +78,39 @@ public class Selectable : MonoBehaviour {
 		selectedObjects.Clear ();
 	}
 
+	void Update() {
+		if (lastSelectTime != Time.time) {
+			if (Input.GetMouseButtonDown(0)) {
+				UnselectAll ();
+			}
+		}
+		lastSelectTime = Time.time; // prevents this from checking the mouse more than once per frame
+	}
+
 	void OnMouseDown() {
-		// only do this if we're allowing click selection
+		// only select if we're allowing click selection
 		if (!clickSelect) {
 			return;
 		}
-		if (!allowMultiple || (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) &&
-		    		!Input.GetKey(KeyCode.LeftCommand) && !Input.GetKey(KeyCode.RightCommand) &&
-		    		!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.RightControl))) {
+		// track whether something was selected
+		lastSelectTime = Time.time;
+		// multi-select or unselect with shift
+		if (selectedObjects.Count > 0 && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))) {
+			// unselect if selected
+			if (selected) {
+				Unselect ();
+				return;
+			}
+			// return if  this or selected object don't allow multiple selection
+			if (!allowMultiple || !selectedObjects[0].GetComponent<Selectable>().allowMultiple) {
+				return;
+			}
+		}
+		else {
+			// not multi-select
 			UnselectAll();
 		}
+
 		if (doCallbacks) {
 			gameObject.SendMessage ("Select", SendMessageOptions.DontRequireReceiver);
 		}
