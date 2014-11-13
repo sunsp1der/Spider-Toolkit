@@ -1,8 +1,8 @@
+
+
 beat experiment
-	selectable
-		deselect when click away from selectables
-		color pulse
-	default sorting layers
+
+
 
 st examples
 	lesson 3
@@ -23,15 +23,15 @@ spawner upgrade
 new features
 	finish camera follow
 	arrange window
+	screen-wrap
+	moveto functions inherent in stobjects
 		
 improvements
-	don't allow archetype to apply when applying to prefabs, if possible. or warning maybe?
+	sign up for callbacks in stSelection
+	default sorting layers
+	don't allow archetype value to apply when applying to prefabs, if possible. or warning maybe?
 	prefab connections to archetypes don't stick on apply
 	special lists for smartfieldlists
 		add smartfieldtype
 		no hideininspector variables
-
-FUTURE
 	make componentfield faster - Need to know how to create dynamic functions in c#
-	screen-wrap
-	moveto functions inherent in stobjects

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-[AddComponentMenu("st Data/Alter Dict On End Scene")]
+[AddComponentMenu("st Scene/Alter Dict On End Scene")]
 
 /// <summary>
 /// Change an stDictionary value when a scene is loaded. Only works for ints and floats!

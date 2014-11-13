@@ -12,8 +12,9 @@ public class stMain : MonoBehaviour {
 	public int audioSources = 4;
 	public bool utilityKeys = true; 
 	/*
-	 * Restart: R
-	 * Pause: P
+	 * Restart: ctrl-R
+	 * Pause: ctrl-P
+	 * Quit: ctrl-Q
 	 */
 	[HideInInspector]
 	public bool undying = false;
@@ -48,13 +49,22 @@ public class stMain : MonoBehaviour {
 
 	void Update() {
 		if (utilityKeys) {
-
-			if (Input.GetKeyDown (KeyCode.R))
-			{
+			if (!Input.GetKey (KeyCode.LeftControl) && !Input.GetKey (KeyCode.RightControl) &&
+			    !Input.GetKey (KeyCode.LeftCommand) && !Input.GetKey(KeyCode.RightCommand)) {
+				return;
+			}
+			if (Input.GetKeyDown (KeyCode.Q)){
+				if (Application.isEditor) {
+					UnityEditor.EditorApplication.isPlaying = false;
+				}
+				else {
+					Application.Quit ();
+				}
+			}
+			if (Input.GetKeyDown (KeyCode.R)) {
 				Application.LoadLevel (startLevel);
 			}
-			if (Input.GetKeyDown (KeyCode.P))
-			{
+			if (Input.GetKeyDown (KeyCode.P)) {
 				if (Time.timeScale == 1) {
 					Time.timeScale = 0;
 				}

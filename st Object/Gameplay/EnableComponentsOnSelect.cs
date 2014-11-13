@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 [AddComponentMenu("st Object/Gameplay/Enable Components On Select")]
-
+[RequireComponent(typeof(Selectable))]
 
 /// <summary>
 /// List behaviors that are only enabled when object is select,
