@@ -45,7 +45,7 @@ public static class stSelection {
 		selectedObjects.Add (ob);
 		Selectable selectable = ob.GetComponent<Selectable> ();
 		if (selectable != null) {
-			selectable.Select ();
+			selectable.selected = true;
 		}
 	}
 
@@ -57,7 +57,7 @@ public static class stSelection {
 		selectedObjects.Remove(ob);
 		Selectable selectable = ob.GetComponent<Selectable> ();
 		if (selectable != null) {
-			selectable.Unselect();
+			selectable.selected = false;
 		}
 	}
 
