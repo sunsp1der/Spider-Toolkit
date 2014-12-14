@@ -17,8 +17,11 @@ public class Cam2DFollow : MonoBehaviour {
 	public bool followX = true;
 	[Tooltip("Follow on Y axis")]
 	public bool followY = false;
+	[Tooltip("Follow on Z axis (maintaining original offset)")]
+	public bool followZ = false;
 
-	Vector3 offsetZ; // camera's z distance from object
+	Vector3 offsetZ; // camera's original z distance from object
+	float positionZ; // camera's original z location
 	Vector3 lastPosition;
 	[HideInInspector]
 	public Vector3 currentVelocity;
@@ -27,6 +30,7 @@ public class Cam2DFollow : MonoBehaviour {
 	void Start () {
 		lastPosition = transform.position;
 		offsetZ = new Vector3(0,0,(followingCamera.position - transform.position).z);
+		positionZ = followingCamera.position.z;
 		lookAheadOffset = Vector3.zero;
 	} 
 	
@@ -50,8 +54,14 @@ public class Cam2DFollow : MonoBehaviour {
 		else { 
 			// if we're not moving, start resetting the offset to zero
 			lookAheadOffset = Vector3.MoveTowards(lookAheadOffset, Vector3.zero, Time.deltaTime * lookAheadReturnSpeed);	
-		}			
-		Vector3 targetCameraPos = transform.position + lookAheadOffset + offsetZ;
+		}		
+		Vector3 targetCameraPos = transform.position + lookAheadOffset;
+		if (followZ) {
+			targetCameraPos += offsetZ;
+		}
+		else {
+			targetCameraPos = new Vector3 (targetCameraPos.x, targetCameraPos.y, positionZ);
+		}
 		followingCamera.position = Vector3.SmoothDamp(followingCamera.position, targetCameraPos, ref currentVelocity, damping);
 		lastPosition = transform.position;		
 	}

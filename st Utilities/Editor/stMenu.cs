@@ -66,6 +66,10 @@ public class stMenu : EditorWindow {
 		bool showChildren = true;
 		Dictionary<string,string> layers = new Dictionary<string, string>()
 		{
+
+			{"User Layer 23","Environment"},
+			{"User Layer 24","PlayerExtra"},
+			{"User Layer 25","TargetExtra"},
 			{"User Layer 26","Collide All"},
 			{"User Layer 27","No Collide"},
 			{"User Layer 28","Player"},
