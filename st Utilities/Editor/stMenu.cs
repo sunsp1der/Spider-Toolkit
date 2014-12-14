@@ -97,6 +97,27 @@ public class stMenu : EditorWindow {
 			Debug.LogError ("Collision Masks not set up due to error creating layers.");
 		}
 		else {
+			//environment
+			Physics2D.IgnoreLayerCollision(23, 23, false);
+			Physics2D.IgnoreLayerCollision(23, 24, true);
+			Physics2D.IgnoreLayerCollision(23, 25, true);
+			Physics2D.IgnoreLayerCollision(23, 28, false);
+			Physics2D.IgnoreLayerCollision(23, 29, false);
+			Physics2D.IgnoreLayerCollision(23, 30, false);
+			Physics2D.IgnoreLayerCollision(23, 31, false);
+			//player extra
+			Physics2D.IgnoreLayerCollision(24, 24, true);
+			Physics2D.IgnoreLayerCollision(24, 25, false);
+			Physics2D.IgnoreLayerCollision(24, 28, true);
+			Physics2D.IgnoreLayerCollision(24, 29, true);
+			Physics2D.IgnoreLayerCollision(24, 30, false);
+			Physics2D.IgnoreLayerCollision(24, 31, false);
+			//target extra
+			Physics2D.IgnoreLayerCollision(25, 25, true);
+			Physics2D.IgnoreLayerCollision(25, 28, false);
+			Physics2D.IgnoreLayerCollision(25, 29, false);
+			Physics2D.IgnoreLayerCollision(25, 30, true);
+			Physics2D.IgnoreLayerCollision(25, 31, true);
 			for (int i = 0; i<=31; i++) {
 				Physics2D.IgnoreLayerCollision(26, i, false);
 			}

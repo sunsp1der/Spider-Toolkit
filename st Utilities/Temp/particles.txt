@@ -1,0 +1,40 @@
+particle system - object that emits particles, can be 2d or 3d
+particle effect - combination of one or many particles systems to create a graphic effect
+any object can have a particle system
+controls in lower right
+animates when selected -
+	can nest to combine/animate both
+in editor
+	each row is a module
+		show all modules in submenu of particle system to simplify
+		drop downs on right of rows lets you change values over time	
+			random
+			curve
+				keyframes
+	open editor... opens particle system editor
+		can be docked
+		can put multiple particle emitters in one particle
+	PARTICLE SYSTEM
+		duration - duration of looping emission or if not looping duration of looping
+		prewarm - start with particles already out there
+		start delay - wait this long before emitting
+		start lifetime - the basic lifetime of each particle
+		start speed - basic speed of each particle
+		start size - how big is each particle
+		start rotation - 
+		start color -
+		gravity multiplier - how much of world's gravity is applied.
+		inherit velocity - how much velocity of object is given to particles
+		simulation space - effect of object's parent space
+		play on wake - start when scene is played?
+		max particles - max # of particles that can be active
+	EMISSION
+		rate - particles per second
+			over distance - emit particles as system moves... more the more it moves
+			time - allows bursts in addition to rate
+	SHAPE
+		shape of emitter
+		mesh only works with 3d object
+	COLOR BY SPEED
+		speed of particle
+		
